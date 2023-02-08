@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Echo365\EchoController;
 
-
+// echo365 - front end section
 Route::get('/', [EchoController::class, 'index'])->name('echo365.home');
 Route::get('/about', [EchoController::class, 'about'])->name('echo365.about');
 Route::get('/contact', [EchoController::class, 'contact'])->name('echo365.contact');
