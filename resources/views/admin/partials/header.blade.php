@@ -33,7 +33,7 @@
 
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
+            <a class="nav-link" data-bs-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
                 <span class="badge badge-danger navbar-badge">3</span>
             </a>
@@ -91,7 +91,7 @@
         </li>
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
+            <a class="nav-link" data-bs-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
                 <span class="badge badge-warning navbar-badge">15</span>
             </a>
@@ -118,7 +118,7 @@
         </li>
         <!-- Profile Dropdown Menu -->
         <li class="nav-item dropdown user-menu show">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">
                 <img src="{{ asset('uploads/'.Auth::guard('admin')->user()->image) }}" class="user-image img-circle elevation-2"
                     alt="User Image">
                 <span class="d-none d-md-inline">{{ Auth::guard('admin')->user()->name }}</span>

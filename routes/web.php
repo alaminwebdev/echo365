@@ -5,7 +5,10 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Echo365\EchoController;
 
 
-Route::get('/', [EchoController::class, 'index'])->name('home');
+Route::get('/', [EchoController::class, 'index'])->name('echo365.home');
+Route::get('/about', [EchoController::class, 'about'])->name('echo365.about');
+Route::get('/contact', [EchoController::class, 'contact'])->name('echo365.contact');
+
 
 // Admin section
 Route::get('admin', [AdminController::class, 'index'])->name('admin.home')->middleware('admin:admin');
