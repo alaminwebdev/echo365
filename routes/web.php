@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Advertisement\AdController;
 use App\Http\Controllers\Echo365\EchoController;
 
 // echo365 - front end section
@@ -29,3 +30,8 @@ Route::any('admin/profile-submit', [AdminController::class, 'profile_submit'])->
 
 Route::get('admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
+// Advertisement section
+Route::get('admin/home-ad', [AdController::class, 'home_ad'])->name('admin.home.ad');
+Route::any('admin/home-ad-update', [AdController::class, 'home_ad_update'])->name('admin.home.ad.update');
+Route::get('admin/top-ad', [AdController::class, 'top_ad'])->name('admin.top.ad');
+Route::any('admin/top-ad-update', [AdController::class, 'top_ad_update'])->name('admin.top.ad.update');

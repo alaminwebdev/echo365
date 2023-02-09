@@ -8,16 +8,7 @@
 
     {{-- content file --}}
     @yield('content')
-    
-    <div class="ad-section-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <a href=""><img src="uploads/ad-1.png" alt=""></a>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     @include('echo365.partials.footer')
 

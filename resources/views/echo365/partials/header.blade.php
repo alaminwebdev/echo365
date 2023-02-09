@@ -39,9 +39,18 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="ad-section-1">
-                    <a href=""><img src="uploads/ad-1.png" alt=""></a>
-                </div>
+                @if ($global_top_ad->top_ad_status == 'show')
+                    <div class="ad-section-1 top-ad">
+                        @if ($global_top_ad->top_ad_url == '')
+                            <img src="{{ asset('uploads/' . $global_top_ad->top_ad) }}" alt="top-ad"
+                                class="img-fluid">
+                        @else
+                            <a href="{{ $global_top_ad->top_ad_url }}"><img
+                                    src="{{ asset('uploads/' . $global_top_ad->top_ad) }}" alt="top-ad"
+                                    class="img-fluid"></a>
+                        @endif
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -63,8 +72,8 @@
                                 <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     Sports
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -74,8 +83,8 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     National
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -85,8 +94,8 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     Lifestyle
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

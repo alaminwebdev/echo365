@@ -400,13 +400,14 @@
             </div>
             <div class="col-lg-4 col-md-6 sidebar-col">
                 <div class="sidebar">
-
                     <div class="widget">
+                        {{-- ad-sidebar --}}
+                        {{-- @yield('sidebar_ad_top') --}}
                         <div class="ad-sidebar">
-                            <a href=""><img src="uploads/ad-3.png" alt=""></a>
+                            <a href="#"><img src="{{ asset('uploads/ad-3.png') }}" alt="ad"
+                                    class="img-fluid"></a>
                         </div>
                     </div>
-
                     <div class="widget">
                         <div class="tag-heading">
                             <h2>Tags</h2>
@@ -470,9 +471,8 @@
                                 <h2>Live Channel - RT News</h2>
                             </div>
                             <div class="live-channel-item">
-                                <iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/V0I5eglJMRI" title="YouTube video player"
-                                    frameborder="0"
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/V0I5eglJMRI"
+                                    title="YouTube video player" frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
                             </div>
@@ -669,6 +669,7 @@
                     </div>
 
                     <div class="widget">
+                        {{-- @yield('sidebar_ad_down') --}}
                         <div class="ad-sidebar">
                             <a href=""><img src="uploads/ad-3.png" alt=""></a>
                         </div>
