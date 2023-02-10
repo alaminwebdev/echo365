@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $top_ad_data = TopAd::find(1);
+        $top_ad_data = TopAd::findOrFail(1);
         view()->share('global_top_ad', $top_ad_data);
     }
 }

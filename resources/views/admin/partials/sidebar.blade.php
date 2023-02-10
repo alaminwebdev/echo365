@@ -34,7 +34,7 @@
 
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-edit"></i>
+            <i class="nav-icon fa-solid fa-rectangle-ad"></i>
             <p>
               Advertisement
               <i class="fas fa-angle-left right"></i>
@@ -42,20 +42,20 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('admin.home.ad') }}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+              <a href="{{ route('admin.home.ad') }}" class="nav-link {{ request()->routeIs('admin.home.ad') ? 'active' : '' }}">
+                <i class="nav-icon fa-solid fa-list-ul"></i>
                 <p>Home Advertisement</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('admin.top.ad') }}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="nav-icon fa-solid fa-list-ul"></i>
                 <p>Top Advertisement</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+              <a href="{{ route('admin.sidebar.ad') }}" class="nav-link">
+                <i class="nav-icon fa-solid fa-list-ul"></i>
                 <p>Sidebar Advertisement</p>
               </a>
             </li>

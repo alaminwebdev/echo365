@@ -33,5 +33,10 @@ Route::get('admin/logout', [AdminController::class, 'logout'])->name('admin.logo
 // Advertisement section
 Route::get('admin/home-ad', [AdController::class, 'home_ad'])->name('admin.home.ad');
 Route::any('admin/home-ad-update', [AdController::class, 'home_ad_update'])->name('admin.home.ad.update');
+
 Route::get('admin/top-ad', [AdController::class, 'top_ad'])->name('admin.top.ad');
 Route::any('admin/top-ad-update', [AdController::class, 'top_ad_update'])->name('admin.top.ad.update');
+
+Route::get('admin/sidebar-ad', [AdController::class, 'sidebar_ad'])->name('admin.sidebar.ad');
+Route::get('admin/sidebar-ad-create', [AdController::class, 'sidebar_ad_create'])->name('admin.sidebar.ad.create');
+Route::any('admin/sidebar-ad-store', [AdController::class, 'sidebar_ad_store'])->name('admin.sidebar.ad.store');
