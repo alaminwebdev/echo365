@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Advertisement\AdController;
 use App\Http\Controllers\Echo365\EchoController;
+use Faker\Guesser\Name;
 
 // echo365 - front end section
 Route::get('/', [EchoController::class, 'index'])->name('echo365.home');
@@ -31,12 +32,15 @@ Route::any('admin/profile-submit', [AdminController::class, 'profile_submit'])->
 Route::get('admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
 // Advertisement section
-Route::get('admin/home-ad', [AdController::class, 'home_ad'])->name('admin.home.ad');
-Route::any('admin/home-ad-update', [AdController::class, 'home_ad_update'])->name('admin.home.ad.update');
+Route::get('admin/home-ad', [AdController::class, 'home_ad'])->name('admin.ad.home');
+Route::any('admin/home-ad-update', [AdController::class, 'home_ad_update'])->name('admin.ad.home.update');
 
-Route::get('admin/top-ad', [AdController::class, 'top_ad'])->name('admin.top.ad');
-Route::any('admin/top-ad-update', [AdController::class, 'top_ad_update'])->name('admin.top.ad.update');
+Route::get('admin/top-ad', [AdController::class, 'top_ad'])->name('admin.ad.top');
+Route::any('admin/top-ad-update', [AdController::class, 'top_ad_update'])->name('admin.ad.top.update');
 
-Route::get('admin/sidebar-ad', [AdController::class, 'sidebar_ad'])->name('admin.sidebar.ad');
-Route::get('admin/sidebar-ad-create', [AdController::class, 'sidebar_ad_create'])->name('admin.sidebar.ad.create');
-Route::any('admin/sidebar-ad-store', [AdController::class, 'sidebar_ad_store'])->name('admin.sidebar.ad.store');
+Route::get('admin/sidebar-ad', [AdController::class, 'sidebar_ad'])->name('admin.ad.sidebar');
+Route::get('admin/sidebar-ad-create', [AdController::class, 'sidebar_ad_create'])->name('admin.ad.sidebar.create');
+Route::any('admin/sidebar-ad-store', [AdController::class, 'sidebar_ad_store'])->name('admin.ad.sidebar.store');
+Route::get('admin/sidebar-ad/{id}', [AdController::class, 'sidebar_ad_show'])->name('admin.ad.sidebar.show');
+Route::any('admin/sidebar-ad-update', [AdController::class, 'sidebar_ad_update'])->name('admin.ad.sidebar.update');
+Route::any('admin/sidebar-ad-delete/{id}', [AdController::class, 'sidebar_ad_delete'])->name('admin.ad.sidebar.delete');

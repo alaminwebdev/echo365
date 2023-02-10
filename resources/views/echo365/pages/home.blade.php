@@ -26,14 +26,14 @@
 
 
     {{-- search content   --}}
-    @include('echo365.section.search-content')
+    @include('echo365.section.home-search')
 
     {{-- home content   --}}
     @include('echo365.section.home-content')
 
 
     {{-- video content  --}}
-    @include('echo365.section.video-content')
+    @include('echo365.section.home-video')
     
     @if ($home_ad_data->above_footer_ad_status == 'show')
         <div class="ad-section-3 above-footer-ad">

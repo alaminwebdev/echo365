@@ -39,7 +39,8 @@
                                 <div class="col-sm-4">
                                     <div class="description-block">
                                         <h5 class="description-header">Updated at</h5>
-                                        <span class="description-text">{{ date('d-M-Y', strtotime($admin->updated_at)) }}</span>
+                                        <span
+                                            class="description-text">{{ date('d-M-Y', strtotime($admin->updated_at)) }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -47,23 +48,23 @@
                     </div>
                 </div>
                 <div class="col-lg-8">
+                    @if (session()->has('success'))
+                        <div class="alert alert-success alert-dismissible">
+                            <i class="icon fas fa-check"></i>
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    {{-- Show all field error in one section --}}
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="card card-success">
-                        @if (session()->has('success'))
-                            <div class="alert alert-success alert-dismissible">
-                                <i class="icon fas fa-check"></i>
-                                {{ session('success') }}
-                            </div>
-                        @endif
-                        {{-- Show all field error in one section --}}
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul class="mb-0">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
                         <div class="card-header">
                             <h3 class="card-title">Edit Profile</h3>
                         </div>
@@ -73,8 +74,9 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Full Name</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter your name" name="name" value="{{ $admin->name }} ">
-                        
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                        placeholder="Enter your name" name="name" value="{{ $admin->name }} ">
+
                                 </div>
                                 <div class="form-group">
                                     <label>Email address</label>
@@ -117,7 +119,8 @@
                                         <div class="form-group">
                                             <label>Date of Birth</label>
                                             <input type="date" name="dob"
-                                                class="form-control @error('dob') is-invalid @enderror" value="{{ date('Y-m-d', strtotime($admin->dob))}}">
+                                                class="form-control @error('dob') is-invalid @enderror"
+                                                value="{{ date('Y-m-d', strtotime($admin->dob)) }}">
                                         </div>
                                     </div>
                                 </div>

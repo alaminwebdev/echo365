@@ -19,16 +19,16 @@ class AdminController extends Controller
     }
     public function about()
     {
-        return view('admin.about');
+        return view('admin.pages.about.about');
     }
     public function login()
     {
-        return view('admin.adminProfile.login');
+        return view('admin.pages.adminProfile.login');
     }
 
     public function profile()
     {
-        return view('admin.adminProfile.profile');
+        return view('admin.pages.adminProfile.profile');
     }
     public function profile_submit(Request $request)
     {
@@ -109,7 +109,7 @@ class AdminController extends Controller
 
     public function forgot()
     {
-        return view('admin.adminProfile.forgot-password');
+        return view('admin.pages.adminProfile.forgot-password');
     }
     public function forgot_submit(Request $request)
     {
@@ -145,7 +145,7 @@ class AdminController extends Controller
             ]);
         }
 
-        return view('admin.adminProfile.reset-password', compact('email', 'token'));
+        return view('admin.pages.adminProfile.reset-password', compact('email', 'token'));
     }
     public function reset_submit(Request $request)
     {

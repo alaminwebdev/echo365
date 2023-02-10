@@ -7,7 +7,7 @@
     <section class="content">
         <div class="container-fluid">
             <!-- form start -->
-            <form action="{{ route('admin.home.ad.update') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.ad.home.update') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
@@ -31,7 +31,7 @@
                     <div class="col-lg-6">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Above Search Ad</h3>
+                                <h3 class="card-title">Above Search Advertisement</h3>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
@@ -68,7 +68,7 @@
                     <div class="col-lg-6">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Above Footer Ad</h3>
+                                <h3 class="card-title">Above Footer Advertisement</h3>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">

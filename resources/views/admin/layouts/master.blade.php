@@ -19,6 +19,7 @@
                     <div class="row mb-2">
                         <div class="col-12 ">
                             <h1 class="m-0">@yield('title')</h1>
+                            <hr>
                         </div>
                     </div>
                 </div>

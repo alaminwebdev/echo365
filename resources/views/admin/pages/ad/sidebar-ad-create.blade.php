@@ -6,7 +6,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <form action="{{ route('admin.sidebar.ad.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.ad.sidebar.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
@@ -24,7 +24,7 @@
                     <div class="col-lg-8 ">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Sidebar Ad</h3>
+                                <h3 class="card-title">Sidebar Advertisement</h3>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">

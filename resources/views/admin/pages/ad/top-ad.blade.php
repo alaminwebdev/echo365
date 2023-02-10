@@ -6,7 +6,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <form action="{{ route('admin.top.ad.update') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.ad.top.update') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
@@ -30,7 +30,7 @@
                     <div class="col-lg-8 ">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Top Search Ad</h3>
+                                <h3 class="card-title">Top Search Advertisement</h3>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
