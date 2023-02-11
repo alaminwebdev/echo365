@@ -33,6 +33,15 @@
         </li>
 
         <li class="nav-item">
+          <a href="{{ route('admin.author.home') }}" class="nav-link {{ request()->routeIs('admin.author.*') ? 'active' : '' }}">
+            <i class="nav-icon fa-solid fa-rectangle-ad"></i>
+            <p>
+              Author
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a href="#" class="nav-link {{ request()->routeIs('admin.ad.*') ? 'active' : '' }}">
             <i class="nav-icon fa-solid fa-rectangle-ad"></i>
             <p>
@@ -85,6 +94,7 @@
             </li>
           </ul>
         </li>
+
 
         <li class="nav-header">MISCELLANEOUS</li>
         <li class="nav-item">

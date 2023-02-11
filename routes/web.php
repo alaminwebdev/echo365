@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Advertisement\AdController;
+use App\Http\Controllers\Author\AuthorController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Category\SubCategoryController;
 use App\Http\Controllers\Echo365\EchoController;
@@ -33,6 +34,15 @@ Route::any('admin/profile-submit', [AdminController::class, 'profile_submit'])->
 
 Route::get('admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
+// Author section
+Route::get('admin/author', [AuthorController::class, 'index'])->name('admin.author.home');
+Route::get('admin/author-create', [AuthorController::class, 'create'])->name('admin.author.create');
+Route::any('admin/author-store', [AuthorController::class, 'store'])->name('admin.author.store');
+Route::get('admin/author-show/{id}', [AuthorController::class, 'show'])->name('admin.author.show');
+Route::any('admin/author-update/', [AuthorController::class, 'update'])->name('admin.author.update');
+Route::any('admin/author-destroy/{id}', [AuthorController::class, 'destroy'])->name('admin.author.destroy');
+
+
 // Advertisement section
 Route::get('admin/home-ad', [AdController::class, 'home_ad'])->name('admin.ad.home');
 Route::any('admin/home-ad-update', [AdController::class, 'home_ad_update'])->name('admin.ad.home.update');
@@ -61,3 +71,4 @@ Route::any('admin/subcategory-store', [SubCategoryController::class, 'store'])->
 Route::get('admin/subcategory-show/{id}', [SubCategoryController::class, 'show'])->name('admin.subcategory.show');
 Route::any('admin/subcategory-update/', [SubCategoryController::class, 'update'])->name('admin.subcategory.update');
 Route::any('admin/subcategory-destroy/{id}', [SubCategoryController::class, 'destroy'])->name('admin.subcategory.destroy');
+
