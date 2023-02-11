@@ -62,6 +62,30 @@
           </ul>
         </li>
 
+        <li class="nav-item">
+          <a href="#" class="nav-link {{ request()->routeIs('admin.category.*') ? 'active' : '' }}">
+            <i class="nav-icon fa-solid fa-rectangle-ad"></i>
+            <p>
+              News Categories
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('admin.category.home') }}" class="nav-link">
+                <i class="nav-icon fa-solid fa-list-ul"></i>
+                <p>Category</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('admin.subcategory.home') }}" class="nav-link">
+                <i class="nav-icon fa-solid fa-list-ul"></i>
+                <p>Sub Category</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
         <li class="nav-header">MISCELLANEOUS</li>
         <li class="nav-item">
           <a href="https://adminlte.io/docs/3.1/" target="_blank" class="nav-link">

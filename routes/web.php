@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Advertisement\AdController;
+use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Category\SubCategoryController;
 use App\Http\Controllers\Echo365\EchoController;
 use Faker\Guesser\Name;
 
@@ -44,3 +46,18 @@ Route::any('admin/sidebar-ad-store', [AdController::class, 'sidebar_ad_store'])-
 Route::get('admin/sidebar-ad/{id}', [AdController::class, 'sidebar_ad_show'])->name('admin.ad.sidebar.show');
 Route::any('admin/sidebar-ad-update', [AdController::class, 'sidebar_ad_update'])->name('admin.ad.sidebar.update');
 Route::any('admin/sidebar-ad-delete/{id}', [AdController::class, 'sidebar_ad_delete'])->name('admin.ad.sidebar.delete');
+
+// Category section
+Route::get('admin/category', [CategoryController::class, 'index'])->name('admin.category.home');
+Route::get('admin/category-create', [CategoryController::class, 'create'])->name('admin.category.create');
+Route::any('admin/category-store', [CategoryController::class, 'store'])->name('admin.category.store');
+Route::get('admin/category-show/{id}', [CategoryController::class, 'show'])->name('admin.category.show');
+Route::any('admin/category-update/', [CategoryController::class, 'update'])->name('admin.category.update');
+Route::any('admin/category-destroy/{id}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
+
+Route::get('admin/subcategory', [SubCategoryController::class, 'index'])->name('admin.subcategory.home');
+Route::get('admin/subcategory-create', [SubCategoryController::class, 'create'])->name('admin.subcategory.create');
+Route::any('admin/subcategory-store', [SubCategoryController::class, 'store'])->name('admin.subcategory.store');
+Route::get('admin/subcategory-show/{id}', [SubCategoryController::class, 'show'])->name('admin.subcategory.show');
+Route::any('admin/subcategory-update/', [SubCategoryController::class, 'update'])->name('admin.subcategory.update');
+Route::any('admin/subcategory-destroy/{id}', [SubCategoryController::class, 'destroy'])->name('admin.subcategory.destroy');
