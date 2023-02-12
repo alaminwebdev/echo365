@@ -7,7 +7,8 @@ use App\Http\Controllers\Author\AuthorController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Category\SubCategoryController;
 use App\Http\Controllers\Echo365\EchoController;
-use Faker\Guesser\Name;
+use App\Http\Controllers\Post\PostController;
+
 
 // echo365 - front end section
 Route::get('/', [EchoController::class, 'index'])->name('echo365.home');
@@ -71,4 +72,12 @@ Route::any('admin/subcategory-store', [SubCategoryController::class, 'store'])->
 Route::get('admin/subcategory-show/{id}', [SubCategoryController::class, 'show'])->name('admin.subcategory.show');
 Route::any('admin/subcategory-update/', [SubCategoryController::class, 'update'])->name('admin.subcategory.update');
 Route::any('admin/subcategory-destroy/{id}', [SubCategoryController::class, 'destroy'])->name('admin.subcategory.destroy');
+
+// Posts section
+Route::get('admin/post', [PostController::class, 'index'])->name('admin.post.home');
+Route::get('admin/post-create', [PostController::class, 'create'])->name('admin.post.create');
+Route::any('admin/post-store', [PostController::class, 'store'])->name('admin.post.store');
+Route::get('admin/post-show/{id}', [PostController::class, 'show'])->name('admin.post.show');
+Route::any('admin/post-update/', [PostController::class, 'update'])->name('admin.post.update');
+Route::any('admin/post-destroy/{id}', [PostController::class, 'destroy'])->name('admin.post.destroy');
 

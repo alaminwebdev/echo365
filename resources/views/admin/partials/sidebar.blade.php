@@ -42,6 +42,15 @@
         </li>
 
         <li class="nav-item">
+          <a href="{{ route('admin.post.home') }}" class="nav-link {{ request()->routeIs('admin.post.*') ? 'active' : '' }}">
+            <i class="nav-icon fa-solid fa-rectangle-ad"></i>
+            <p>
+              Posts
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a href="#" class="nav-link {{ request()->routeIs('admin.ad.*') ? 'active' : '' }}">
             <i class="nav-icon fa-solid fa-rectangle-ad"></i>
             <p>
