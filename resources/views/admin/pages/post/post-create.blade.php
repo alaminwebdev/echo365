@@ -53,7 +53,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Category</label>
-                                            <select class="form-control" name="subcategory_id ">
+                                            <select class="form-control" name="subcategory_id">
                                                 @foreach($subcategoris as $subcategory)
                                                 <option value="{{ $subcategory->id }}">
                                                     {{ $subcategory->subcategory_name }} - {{ $subcategory->rCategory->category_name }}
@@ -87,6 +87,10 @@
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Add Tag</label>
+                                    <input type="text" value="" class="form-control" data-role="tagsinput"  name="tag"/>
                                 </div>
                                 
                             </div>

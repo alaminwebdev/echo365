@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('title');
             $table->string('image');
             $table->text('detail');
-            $table->foreignId('subcategory_id')->constrained('sub_categories')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('author_id')->constrained('authors')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('admin_id')->constrained('admins')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('subcategory_id')->nullable()->constrained('sub_categories')->onDelete('set null');
+            $table->foreignId('author_id')->nullable()->constrained('authors')->onDelete('set null');
+            $table->foreignId('admin_id')->nullable()->constrained('admins')->onDelete('set null');
             $table->integer('is_share');
             $table->integer('is_comment');
             $table->integer('visitors');
