@@ -38,12 +38,14 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td class="text-center">
-                                                <img src="" class="img-fluid rounded" alt="" style="width: 90px
+                                                <img src="{{ asset('uploads/'.$post->image) }}" class="img-fluid rounded" alt="" style="width: 90px
                                                 ">
                                             </td>
                                             <td>{{ $post->title }}</td>
-                                            <td>Author</td>
-                                            <td>Category</td>
+                                            <td>{{ Auth::guard('admin')->user()->name }}</td>
+                                            <td>
+                                                {{ $post->rSubCategory->subcategory_name }}
+                                            </td>
                                             <td>
                                                 <div class="btn-group" role="group"
                                                     aria-label="Basic mixed styles example">

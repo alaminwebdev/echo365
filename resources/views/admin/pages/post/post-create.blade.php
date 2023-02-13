@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Detail</label>
-                                    <textarea class="form-control @error('detail') is-invalid @enderror" rows="3" placeholder="Enter ..."
+                                    <textarea class="form-control @error('detail') is-invalid @enderror" rows="5" placeholder="Enter ..."
                                         style="height: 124px;" name="detail"></textarea>
                                 </div>
                                 <div class="row">
@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Add Tag</label>
-                                    <input type="text" value="" class="form-control" data-role="tagsinput"  name="tag"/>
+                                    <input type="text" value="" data-role="tagsinput"  name="tags" placeholder="Add tags & press enter "/>
                                 </div>
                                 
                             </div>

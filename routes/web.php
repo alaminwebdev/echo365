@@ -41,7 +41,7 @@ Route::get('admin/author-create', [AuthorController::class, 'create'])->name('ad
 Route::any('admin/author-store', [AuthorController::class, 'store'])->name('admin.author.store');
 Route::get('admin/author-show/{id}', [AuthorController::class, 'show'])->name('admin.author.show');
 Route::any('admin/author-update/', [AuthorController::class, 'update'])->name('admin.author.update');
-Route::any('admin/author-destroy/{id}', [AuthorController::class, 'destroy'])->name('admin.author.destroy');
+Route::get('admin/author-destroy/{id}', [AuthorController::class, 'destroy'])->name('admin.author.destroy');
 
 
 // Advertisement section
@@ -56,7 +56,7 @@ Route::get('admin/sidebar-ad-create', [AdController::class, 'sidebar_ad_create']
 Route::any('admin/sidebar-ad-store', [AdController::class, 'sidebar_ad_store'])->name('admin.ad.sidebar.store');
 Route::get('admin/sidebar-ad/{id}', [AdController::class, 'sidebar_ad_show'])->name('admin.ad.sidebar.show');
 Route::any('admin/sidebar-ad-update', [AdController::class, 'sidebar_ad_update'])->name('admin.ad.sidebar.update');
-Route::any('admin/sidebar-ad-delete/{id}', [AdController::class, 'sidebar_ad_delete'])->name('admin.ad.sidebar.delete');
+Route::get('admin/sidebar-ad-delete/{id}', [AdController::class, 'sidebar_ad_delete'])->name('admin.ad.sidebar.delete');
 
 // Category section
 Route::get('admin/category', [CategoryController::class, 'index'])->name('admin.category.home');
@@ -64,14 +64,14 @@ Route::get('admin/category-create', [CategoryController::class, 'create'])->name
 Route::any('admin/category-store', [CategoryController::class, 'store'])->name('admin.category.store');
 Route::get('admin/category-show/{id}', [CategoryController::class, 'show'])->name('admin.category.show');
 Route::any('admin/category-update/', [CategoryController::class, 'update'])->name('admin.category.update');
-Route::any('admin/category-destroy/{id}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
+Route::get('admin/category-destroy/{id}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
 
 Route::get('admin/subcategory', [SubCategoryController::class, 'index'])->name('admin.subcategory.home');
 Route::get('admin/subcategory-create', [SubCategoryController::class, 'create'])->name('admin.subcategory.create');
 Route::any('admin/subcategory-store', [SubCategoryController::class, 'store'])->name('admin.subcategory.store');
 Route::get('admin/subcategory-show/{id}', [SubCategoryController::class, 'show'])->name('admin.subcategory.show');
 Route::any('admin/subcategory-update/', [SubCategoryController::class, 'update'])->name('admin.subcategory.update');
-Route::any('admin/subcategory-destroy/{id}', [SubCategoryController::class, 'destroy'])->name('admin.subcategory.destroy');
+Route::get('admin/subcategory-destroy/{id}', [SubCategoryController::class, 'destroy'])->name('admin.subcategory.destroy');
 
 // Posts section
 Route::get('admin/post', [PostController::class, 'index'])->name('admin.post.home');
@@ -79,5 +79,5 @@ Route::get('admin/post-create', [PostController::class, 'create'])->name('admin.
 Route::any('admin/post-store', [PostController::class, 'store'])->name('admin.post.store');
 Route::get('admin/post-show/{id}', [PostController::class, 'show'])->name('admin.post.show');
 Route::any('admin/post-update/', [PostController::class, 'update'])->name('admin.post.update');
-Route::any('admin/post-destroy/{id}', [PostController::class, 'destroy'])->name('admin.post.destroy');
-
+Route::get('admin/post-destroy/{id}', [PostController::class, 'destroy'])->name('admin.post.destroy');
+Route::get('admin/tag-destroy/{id}/{post_id}', [PostController::class, 'tag_destroy'])->name('admin.tag.destroy');

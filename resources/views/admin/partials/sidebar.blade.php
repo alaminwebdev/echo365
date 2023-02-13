@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-teal elevation-4">
+<aside class="main-sidebar sidebar-light-primary elevation-4">
   <!-- Brand Logo -->
   <a href="index3.html" class="brand-link">
     <img src="{{ asset('dist/img/logo.png') }}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -34,7 +34,7 @@
 
         <li class="nav-item">
           <a href="{{ route('admin.author.home') }}" class="nav-link {{ request()->routeIs('admin.author.*') ? 'active' : '' }}">
-            <i class="nav-icon fa-solid fa-rectangle-ad"></i>
+            <i class="fa-solid fa-users nav-icon"></i>
             <p>
               Author
             </p>
@@ -43,7 +43,7 @@
 
         <li class="nav-item">
           <a href="{{ route('admin.post.home') }}" class="nav-link {{ request()->routeIs('admin.post.*') ? 'active' : '' }}">
-            <i class="nav-icon fa-solid fa-rectangle-ad"></i>
+            <i class="fa-solid fa-newspaper nav-icon"></i>
             <p>
               Posts
             </p>
@@ -82,7 +82,7 @@
 
         <li class="nav-item">
           <a href="#" class="nav-link {{ request()->routeIs('admin.category.*') ? 'active' : '' }}">
-            <i class="nav-icon fa-solid fa-rectangle-ad"></i>
+            <i class="nav-icon fa-solid fa-list-ul"></i>
             <p>
               News Categories
               <i class="fas fa-angle-left right"></i>

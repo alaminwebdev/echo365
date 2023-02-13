@@ -5,19 +5,17 @@ namespace App\Http\Controllers\Post;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\SubCategory;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $posts = Post::get();
+        $posts = Post::with('rSubCategory')->get();
+        //dd($posts);
         return view('admin.pages.post.post', compact('posts'));
     }
 
@@ -27,92 +25,148 @@ class PostController extends Controller
         return view('admin.pages.post.post-create', compact('subcategoris'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-       if($request->isMethod('post')){
-        //dd($request->all());
-        $request->validate([
-            'title' => 'required',
-            'detail' => 'required',
-            'image' => 'required|image|mimes:jpg,png,jpeg|max:512'
-        ]);
+        if ($request->isMethod('post')) {
+            $request->validate([
+                'title' => 'required',
+                'detail' => 'required',
+                'image' => 'required|image|mimes:jpg,png,jpeg|max:512'
+            ]);
+            $ext_name = $request->file('image')->extension();
+            $img_name = 'post' . time() . '.' . $ext_name;
 
-    
+            //dd($img_name);
 
-        $ext_name = $request->file('image')->extension();
-        $img_name = 'post'.time().'.'.$ext_name;
-        
-        //dd($img_name);
+            $post = new Post();
 
-        $post = New Post();
+            $post->title = $request->title;
+            $post->image = $img_name;
+            $request->file('image')->move(public_path('uploads/'), $img_name);
+            $post->detail = $request->detail;
+            $post->subcategory_id = $request->subcategory_id;
+            $post->admin_id  = Auth::guard('admin')->user()->id;
+            //$post->author_id  = 0;
+            $post->is_share = $request->is_share;
+            $post->is_comment = $request->is_comment;
+            $post->visitors = 1;
+            $post->save();
 
-        $post->title = $request->title;
-        $post->image = $img_name;
-        $request->file('image')->move(public_path('uploads/'), $img_name);
-        $post->detail = $request->detail;
-        $post->subcategory_id = $request->subcategory_id;
-        $post->admin_id  = Auth::guard('admin')->user()->id;
-        //$post->author_id  = 0;
-        $post->is_share = $request->is_share;
-        $post->is_comment = $request->is_comment;
-        $post->visitors = 1;
-        $post->save();
+            $lastinsertedId = $post->id;
 
-        $lastinsertedId = $post->id;
+            // create an array for tags
+            $tags = explode(',', $request->tags);
 
-        echo $lastinsertedId ;
-        
-       } 
+            // create an empty array 
+            $tags_array = [];
+
+            // trim each tag and insert this empty array
+            foreach ($tags as $tag) {
+                $tags_array[] = trim($tag);
+            }
+            // avoid duplicate tag and rearrange index number
+            $new_tags_array = array_values(array_unique($tags_array));
+
+            // insert each tag into database 
+            foreach ($new_tags_array as $tag) {
+                $tag_data = new Tag();
+                $tag_data->tag = $tag;
+                $tag_data->post_id = $lastinsertedId;
+                $tag_data->save();
+            }
+
+            return redirect()->route('admin.post.home')->with('success', 'Post created Successfully !');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $subcategoris = SubCategory::with('rCategory')->get();
+        $tags = Tag::where('post_id', $id)->get();
+        return view('admin.pages.post.post-update', compact('post', 'subcategoris', 'tags'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function update(Request $request)
     {
-        //
+        $post = Post::findOrFail($request->id);
+        //dd($request->all());
+        if ($request->isMethod('post')) {
+            $request->validate([
+                'title' => 'required',
+                'detail' => 'required'
+            ]);
+
+            if ($request->hasFile('image')) {
+                $request->validate([
+                    'image' => 'image|mimes:jpg,png,jpeg|max:512'
+                ]);
+
+                // if validation is complete then delete the old photo from local server
+                $image_path = public_path('uploads/' . $post->image);
+                if (file_exists($image_path) && !empty($post->image)) {
+                    unlink($image_path);
+                };
+
+
+                $ext_name = $request->file('image')->extension();
+                $img_name = 'post' . time() . '.' . $ext_name;
+
+                $request->file('image')->move(public_path('uploads/'), $img_name);
+
+                $post->image = $img_name;
+            }
+            $post->title = $request->title;
+            $post->detail = $request->detail;
+            $post->subcategory_id = $request->subcategory_id;
+            $post->admin_id  = Auth::guard('admin')->user()->id;
+            //$post->author_id  = 0;
+            $post->is_share = $request->is_share;
+            $post->is_comment = $request->is_comment;
+            $post->update();
+
+            if ($request->filled('tags')) {
+                $tags = explode(',', $request->tags);
+                foreach ($tags as $tag) {
+                    // trim tha tag data
+                    $trimmed_tag = trim($tag);
+                    // check the tag are already exist in database or not 
+                    $tag_data = Tag::where('post_id', $request->id)
+                        ->where('tag', $trimmed_tag)->count();
+
+                    if (!$tag_data) { // if tag are not exist
+                        $new_tag = new Tag();
+                        $new_tag->tag = $trimmed_tag;
+                        $new_tag->post_id = $request->id;
+                        $new_tag->save();
+                    }
+                }
+            }
+            return redirect()->route('admin.post.home')->with('success', 'Post updated successfully !');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        $post = Post::findorFail($id);
+        Tag::where('post_id', $id)->delete();
+        unlink(public_path('uploads/') . $post->image);
+        $post->delete();
+        return redirect()->route('admin.post.home')->with('success', 'Post deleted Successfully !');
+    }
+
+    public function tag_destroy($tag_id, $post_id)
+    {
+        Tag::destroy($tag_id);
+        return redirect()->route('admin.post.show', $post_id)->with('success', 'Tag deleted Successfully !');
     }
 }
