@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Advertisement\AdController;
-use App\Http\Controllers\Author\AuthorController;
-use App\Http\Controllers\Category\CategoryController;
-use App\Http\Controllers\Category\SubCategoryController;
+use App\Http\Controllers\Admin\TickerController;
+use App\Http\Controllers\Admin\AdController;
+use App\Http\Controllers\Admin\AuthorController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Echo365\EchoController;
-use App\Http\Controllers\Post\PostController;
+use App\Http\Controllers\Admin\PostController;
 
 
 // echo365 - front end section
@@ -81,3 +82,7 @@ Route::get('admin/post-show/{id}', [PostController::class, 'show'])->name('admin
 Route::any('admin/post-update/', [PostController::class, 'update'])->name('admin.post.update');
 Route::get('admin/post-destroy/{id}', [PostController::class, 'destroy'])->name('admin.post.destroy');
 Route::get('admin/tag-destroy/{id}/{post_id}', [PostController::class, 'tag_destroy'])->name('admin.tag.destroy');
+
+// Tiker section
+Route::get('admin/ticker', [TickerController::class, 'index'])->name('admin.ticker.home');
+Route::any('admin/ticker-update/', [TickerController::class, 'update'])->name('admin.ticker.update');

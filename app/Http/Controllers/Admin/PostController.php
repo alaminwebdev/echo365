@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Post;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
@@ -31,7 +31,7 @@ class PostController extends Controller
             $request->validate([
                 'title' => 'required',
                 'detail' => 'required',
-                'image' => 'required|image|mimes:jpg,png,jpeg|max:512'
+                'image' => 'required|image|mimes:jpg,png,jpeg,webp|max:512'
             ]);
             $ext_name = $request->file('image')->extension();
             $img_name = 'post' . time() . '.' . $ext_name;
@@ -107,7 +107,7 @@ class PostController extends Controller
 
             if ($request->hasFile('image')) {
                 $request->validate([
-                    'image' => 'image|mimes:jpg,png,jpeg|max:512'
+                    'image' => 'image|mimes:jpg,png,jpeg,webp|max:512'
                 ]);
 
                 // if validation is complete then delete the old photo from local server
@@ -159,7 +159,11 @@ class PostController extends Controller
     {
         $post = Post::findorFail($id);
         Tag::where('post_id', $id)->delete();
-        unlink(public_path('uploads/') . $post->image);
+        $image_path = public_path('uploads/'.$post->image);
+        if(file_exists($image_path) && !empty($post->image)){
+            unlink($image_path);
+        }
+        
         $post->delete();
         return redirect()->route('admin.post.home')->with('success', 'Post deleted Successfully !');
     }

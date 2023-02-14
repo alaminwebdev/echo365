@@ -171,27 +171,3 @@
     </div>
 </div>
 
-<div class="news-ticker-item">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="acme-news-ticker">
-                    <div class="acme-news-ticker-label">Latest News</div>
-                    <div class="acme-news-ticker-box">
-                        <ul class="my-news-ticker">
-                            <li><a href="">Helicopter crashes into waves off crowded Miami beach</a></li>
-                            <li><a href="">Canadian police appear to end protesters' siege of Ottawa</a>
-                            </li>
-                            <li><a href="">Speedskating champ chooses sportsmanship over Olympic medal</a>
-                            </li>
-                            <li><a href="">USDA head: US farmers to help if Ukraine exports threatened</a>
-                            </li>
-                            <li><a href="">Actor Lindsey Pearlman found dead after going missing in LA</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

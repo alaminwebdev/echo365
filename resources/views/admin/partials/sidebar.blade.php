@@ -51,6 +51,15 @@
         </li>
 
         <li class="nav-item">
+          <a href="{{ route('admin.ticker.home') }}" class="nav-link {{ request()->routeIs('admin.ticker.*') ? 'active' : '' }}">
+            <i class="fa-solid fa-newspaper nav-icon"></i>
+            <p>
+              News Ticker
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a href="#" class="nav-link {{ request()->routeIs('admin.ad.*') ? 'active' : '' }}">
             <i class="nav-icon fa-solid fa-rectangle-ad"></i>
             <p>
@@ -84,7 +93,7 @@
           <a href="#" class="nav-link {{ request()->routeIs('admin.category.*') ? 'active' : '' }}">
             <i class="nav-icon fa-solid fa-list-ul"></i>
             <p>
-              News Categories
+              Categories
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>

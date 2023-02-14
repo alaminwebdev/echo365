@@ -1,7 +1,11 @@
+
 .table td, .table th {
   vertical-align: middle;
 }
 
+.content-wrapper {
+  background-color: #fff !important;
+}
 /*
  * bootstrap-tagsinput v0.8.0
  * 
