@@ -15,9 +15,26 @@ class EchoController extends Controller
         $home_ad_data = HomeAd::find(1);
         $tickers = Ticker::findOrFail(1);
         $posts = Post::latest()->take($tickers->ticker_count)->get(['id', 'title',]);
-        
         //dd($posts);
-        return view('echo365.pages.home', compact('home_ad_data', 'tickers' , 'posts'));
+        return view('echo365.pages.home', compact('home_ad_data', 'tickers', 'posts'));
+    }
+
+    public function post($id)
+    {
+        $post = Post::with(
+            'rSubCategory:id,subcategory_name',
+            'rAdmin:id,name',
+            'rAuthor:id,name',
+            'rTag:id,tag,post_id'
+        )->findOrFail($id);
+
+        //dd($post);
+
+        // increments views by 1
+        $post->increment('visitors');
+        $post->update();
+
+        return view('echo365.pages.post', compact('post'));
     }
 
     public function about()
@@ -29,5 +46,4 @@ class EchoController extends Controller
     {
         return view('echo365.pages.contact');
     }
-
 }

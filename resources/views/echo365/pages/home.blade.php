@@ -12,7 +12,7 @@
                                 <ul class="my-news-ticker">
                                     @foreach ($posts as $post)
                                         <li>
-                                            <a href="">
+                                            <a href="{{ route('echo365.post',$post->id) }}">
                                                 {{ $post->title }}
                                             </a>
                                         </li>

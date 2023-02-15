@@ -98,7 +98,8 @@
                                             <label>Category</label>
                                             <select class="form-control" name="subcategory_id">
                                                 @foreach ($subcategoris as $subcategory)
-                                                    <option value="{{ $subcategory->id }}">
+                                                    <option value="{{ $subcategory->id }}"
+                                                        @if ($subcategory->id == $post->subcategory_id) selected @endif>
                                                         {{ $subcategory->subcategory_name }} -
                                                         {{ $subcategory->rCategory->category_name }}
                                                     </option>

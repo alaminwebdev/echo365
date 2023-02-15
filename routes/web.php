@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\PostController;
 // echo365 - front end section
 Route::get('/', [EchoController::class, 'index'])->name('echo365.home');
 Route::get('/about', [EchoController::class, 'about'])->name('echo365.about');
+Route::get('post/{id}', [EchoController::class, 'post'])->name('echo365.post');
 Route::get('/contact', [EchoController::class, 'contact'])->name('echo365.contact');
 
 
