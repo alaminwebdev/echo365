@@ -16,17 +16,19 @@
 		}, 700)
 	});
 
-    $('.my-news-ticker').AcmeTicker({
-		type:'typewriter',
-		direction: 'right',
-		speed:50,
-        autoplay: 500,
-		controls: {
-			prev: $('.acme-news-ticker-prev'),
-			toggle: $('.acme-news-ticker-pause'),
-			next: $('.acme-news-ticker-next')
-		}
-	});
+    $('#webTicker').webTicker();
+
+    // $('.my-news-ticker').AcmeTicker({
+	// 	type:'typewriter',
+	// 	direction: 'right',
+	// 	speed:50,
+    //     autoplay: 500,
+	// 	controls: {
+	// 		prev: $('.acme-news-ticker-prev'),
+	// 		toggle: $('.acme-news-ticker-pause'),
+	// 		next: $('.acme-news-ticker-next')
+	// 	}
+	// });
 
 	$(document).ready(function() {
 		$('.select2').select2({

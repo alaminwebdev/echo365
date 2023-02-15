@@ -8,7 +8,9 @@
     <link rel="icon" type="image/png" href="uploads/favicon.png">
 
     <!-- All CSS -->
-    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    
     <link rel="stylesheet" href="{{ asset('plugins/jquery-ui/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/animate/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/magnific-popup/magnific-popup.css') }}">

@@ -1,6 +1,6 @@
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('plugins/acmeticker/acmeticker.js') }}"></script>
-<script src="{{ asset('plugins/bootstrap/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('plugins/webticker/webticker.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{ asset('plugins/carousel/owl.carousel.min.js') }}"></script>

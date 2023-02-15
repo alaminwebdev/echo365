@@ -9,7 +9,7 @@
                         <div class="acme-news-ticker">
                             <div class="acme-news-ticker-label">Latest News</div>
                             <div class="acme-news-ticker-box">
-                                <ul class="my-news-ticker">
+                                <ul class="my-news-ticker" id="webTicker">
                                     @foreach ($posts as $post)
                                         <li>
                                             <a href="{{ route('echo365.post',$post->id) }}">
