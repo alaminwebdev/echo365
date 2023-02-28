@@ -2,28 +2,23 @@
 @section('title', 'Home')
 @section('content')
     @if ($tickers->ticker_status == 'show')
-        <div class="news-ticker-item">
+        <section class="my-2">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="acme-news-ticker">
-                            <div class="acme-news-ticker-label">Latest News</div>
-                            <div class="acme-news-ticker-box">
-                                <ul class="my-news-ticker" id="webTicker">
-                                    @foreach ($posts as $post)
-                                        <li>
-                                            <a href="{{ route('echo365.post',$post->id) }}">
-                                                {{ $post->title }}
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
+                        <ul id="webTicker">
+                            @foreach ($posts as $post)
+                                <li>
+                                    <a href="{{ route('echo365.post', $post->id) }}" class="text-dark text-wrap bg-body-secondary fs-5">
+                                        {{ $post->title }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     @endif
     {{-- home banner  --}}
     @include('echo365.section.home-banner')
@@ -39,7 +34,7 @@
                         @else
                             <a href="{{ $home_ad_data->above_search_ad_url }}"><img
                                     src="{{ asset('uploads/' . $home_ad_data->above_search_ad) }}" alt="above-serach-ad"
-                                    class="img-fluid"></a>
+                                    class="img-fluid rounded"></a>
                         @endif
                     </div>
                 </div>
