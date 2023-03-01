@@ -16,7 +16,10 @@
 		}, 700)
 	});
 
-    $('#webTicker').webTicker();
+    $('#webTicker').webTicker({
+        height: '40px',
+        transition: "linear"
+    });
 
     // $('.my-news-ticker').AcmeTicker({
 	// 	type:'typewriter',

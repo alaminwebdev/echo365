@@ -1,11 +1,13 @@
-<header>
-    <div class="px-3 py-2 border-bottom">
-        <div class="container d-flex flex-wrap justify-content-center align-items-center">
-            <div class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto">
+<div class="container">
+    <header class="lh-1 py-3 border-bottom">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4 d-none d-sm-block  pt-1">
                 <p> <i class="bi bi-calendar-fill"></i> Today: January 20, 2023</p>
             </div>
-
-            <div class="text-end">
+            <div class="col-4 text-center">
+                <a class="blog-header-logo text-dark" href="{{ route('echo365.home') }}">echo365</a>
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center">
                 <button type="button" class="btn btn-sm btn-light text-dark me-2">Login</button>
                 <button type="button" class="btn btn-sm btn-primary me-2">Sign-up</button>
                 <select class="form-select form-select-sm" style="display: inline; width:auto">
@@ -14,26 +16,16 @@
                     <option value="3">Hindi</option>
                 </select>
             </div>
-
         </div>
-    </div>
-</header>
+    </header>
+</div>
+
 
 
 <section>
     <div class="container my-2">
         <div class="row">
-            <div class="col-md-4 d-flex align-items-center">
-                <div class="logo">
-                    <a href="{{ route('echo365.home') }}"
-                        class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-decoration-none">
-                        <h1>
-                            <i class="bi bi-newspaper"></i>
-                        </h1>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-8">
+            <div class="col-12 ">
                 @if ($global_top_ad->top_ad_status == 'show')
                     <div class="ad-section-1 top-ad">
                         @if ($global_top_ad->top_ad_url == '')
@@ -60,10 +52,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('echo365.home')? 'active' : '' }}" aria-current="page" href="{{ route('echo365.home') }}">Home</a>
+                    <a class="nav-link {{ request()->routeIs('echo365.home') ? 'active' : '' }}" aria-current="page"
+                        href="{{ route('echo365.home') }}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">Sports</a>
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                        href="#">Sports</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Cricket</a></li>
                         <li><a class="dropdown-item" href="#">Football</a></li>
@@ -86,4 +80,3 @@
         </div>
     </div>
 </nav>
-

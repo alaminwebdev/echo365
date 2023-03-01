@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="main-text">
-                        <p>{{ $post->detail }}</p>
+                        <p>{!! nl2br($post->detail) !!}</p>
                     </div>
                     <div class="tag-section">
                         <h2>Tags</h2>

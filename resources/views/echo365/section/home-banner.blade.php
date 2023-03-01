@@ -1,3 +1,16 @@
+<section class="home-banner my-2">
+    <div class="container">
+        <div class="p-4 p-md-5 mb-4 rounded text-bg-dark has-bg-img">
+            <div class="col-md-6 px-0">
+                <h1 class="display-6 fst-italic">{{ $featured_post[0]->title }}</h1>
+                <p class="lead my-3">{{ Str::words($featured_post[0]->detail, 15, '...') }}</p>
+                <p class="lead mb-0"><a href="{{ route('echo365.post', $featured_post[0]->id) }}" class="text-white post-link">Continue reading...</a></p>
+                <img src="{{ asset('uploads/'.$featured_post[0]->image) }}" class="bg-img" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
 <div class="home-main">
     <div class="container">
         <div class="row g-2">

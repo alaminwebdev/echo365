@@ -14,9 +14,10 @@ class EchoController extends Controller
     {
         $home_ad_data = HomeAd::find(1);
         $tickers = Ticker::findOrFail(1);
-        $posts = Post::latest()->take($tickers->ticker_count)->get(['id', 'title',]);
-        //dd($posts);
-        return view('echo365.pages.home', compact('home_ad_data', 'tickers', 'posts'));
+        $posts = Post::latest()->take($tickers->ticker_count)->get(['id', 'title']);
+        $featured_post = Post::latest()->take(3)->get(['id','title','image','detail']);
+        //dd($featured_post);
+        return view('echo365.pages.home', compact('home_ad_data', 'tickers', 'posts','featured_post'));
     }
 
     public function post($id)
