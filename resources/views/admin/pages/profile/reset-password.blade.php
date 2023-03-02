@@ -26,9 +26,9 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Retype Password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control @error('rt-password') is-invalid @enderror "
-                                placeholder="Password" name="rt-password">
-                            @error('rt-password')
+                            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror "
+                                placeholder="Password" name="password_confirmation">
+                            @error('password_confirmation')
                                 <span class="error invalid-feedback">{{ $message }}</span>
                             @enderror
                         </div>

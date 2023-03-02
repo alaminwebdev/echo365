@@ -23,12 +23,12 @@ class AdminController extends Controller
     }
     public function login()
     {
-        return view('admin.pages.adminProfile.login');
+        return view('admin.pages.profile.login');
     }
 
     public function profile()
     {
-        return view('admin.pages.adminProfile.profile');
+        return view('admin.pages.profile.profile');
     }
     public function profile_submit(Request $request)
     {
@@ -109,7 +109,7 @@ class AdminController extends Controller
 
     public function forgot()
     {
-        return view('admin.pages.adminProfile.forgot-password');
+        return view('admin.pages.profile.forgot-password');
     }
     public function forgot_submit(Request $request)
     {
@@ -145,15 +145,15 @@ class AdminController extends Controller
             ]);
         }
 
-        return view('admin.pages.adminProfile.reset-password', compact('email', 'token'));
+        return view('admin.pages.profile.reset-password', compact('email', 'token'));
     }
     public function reset_submit(Request $request)
     {
         //dd($request->all());
         if ($request->isMethod('post')) {
             $request->validate([
-                'password' => 'required|min:5',
-                'rt-password' => 'required|min:5'
+                'password' => 'required|min:5|confirmed',
+                'password_confirmation' => 'required'
             ]);
 
             $data = Admin::where('email', $request->email)->where('token', $request->token)->first();

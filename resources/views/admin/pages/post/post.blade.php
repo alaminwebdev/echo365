@@ -41,7 +41,7 @@
                                                 <img src="{{ asset('uploads/'.$post->image) }}" class="img-fluid rounded" alt="" style="width: 90px
                                                 ">
                                             </td>
-                                            <td>{{ $post->title }}</td>
+                                            <td>{{ $post->title }} {!! $post->is_featured ? '<span class="badge bg-success">Featured</span>' : '' !!}</td>
                                             <td>{{ Auth::guard('admin')->user()->name }}</td>
                                             <td>
                                                 {{ $post->rSubCategory->subcategory_name }}

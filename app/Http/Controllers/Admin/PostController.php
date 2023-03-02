@@ -49,6 +49,7 @@ class PostController extends Controller
             //$post->author_id  = 0;
             $post->is_share = $request->is_share;
             $post->is_comment = $request->is_comment;
+            $post->is_featured = $request->is_featured;
             $post->visitors = 1;
             $post->save();
 
@@ -131,6 +132,7 @@ class PostController extends Controller
             //$post->author_id  = 0;
             $post->is_share = $request->is_share;
             $post->is_comment = $request->is_comment;
+            $post->is_featured = $request->is_featured;
             $post->update();
 
             if ($request->filled('tags')) {

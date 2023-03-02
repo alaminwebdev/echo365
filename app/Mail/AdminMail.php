@@ -45,7 +45,7 @@ class AdminMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'admin.adminProfile.email',
+            view: 'admin.pages.profile.email',
             with:[
                 'emailSubject' => $this->subject,
                 'emailBody' => $this->message

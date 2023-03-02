@@ -54,10 +54,11 @@
                                         <div class="form-group">
                                             <label>Category</label>
                                             <select class="form-control" name="subcategory_id">
-                                                @foreach($subcategoris as $subcategory)
-                                                <option value="{{ $subcategory->id }}">
-                                                    {{ $subcategory->subcategory_name }} - {{ $subcategory->rCategory->category_name }}
-                                                </option>
+                                                @foreach ($subcategoris as $subcategory)
+                                                    <option value="{{ $subcategory->id }}">
+                                                        {{ $subcategory->subcategory_name }} -
+                                                        {{ $subcategory->rCategory->category_name }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -88,11 +89,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Add Tag</label>
-                                    <input type="text" value="" data-role="tagsinput"  name="tags" placeholder="Add tags & press enter "/>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Is Featured ?</label>
+                                            <select name="is_featured" class="form-control">
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Add Tag</label>
+                                            <input type="text" value="" data-role="tagsinput" name="tags"
+                                                placeholder="Add tags & press enter " />
+                                        </div>
+                                    </div>
                                 </div>
-                                
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success">Update</button>

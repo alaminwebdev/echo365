@@ -137,10 +137,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Add Tag</label>
-                                    <input type="text" data-role="tagsinput" name="tags"
-                                        placeholder="Add tags & press enter " />
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Is featured ? </label>
+                                            <select class="form-control" name="is_featured">
+                                                <option value="1" @if ($post->is_featured == 1) selected @endif>
+                                                    Yes</option>
+                                                <option value="0" @if ($post->is_featured == 0) selected @endif>
+                                                    No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Add Tag</label>
+                                            <input type="text" data-role="tagsinput" name="tags"
+                                                placeholder="Add tags & press enter " />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-footer">
