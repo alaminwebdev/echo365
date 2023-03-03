@@ -17,7 +17,6 @@
 	});
 
     $('#webTicker').webTicker({
-        height: '40px',
         transition: "linear"
     });
 

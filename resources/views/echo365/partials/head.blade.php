@@ -10,16 +10,8 @@
     <!-- All CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-
-    <link rel="stylesheet" href="{{ asset('plugins/jquery-ui/jquery-ui.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/animate/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/magnific-popup/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/carousel/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/select2/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/select2/select2-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/sweetalert2/sweetalert2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/spacing/spacing.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/front/style.css') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

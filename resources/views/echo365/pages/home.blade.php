@@ -2,7 +2,7 @@
 @section('title', 'Home')
 @section('content')
     @if ($tickers->ticker_status == 'show')
-        <section class="my-2">
+        <section class="my-4">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

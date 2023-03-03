@@ -1,13 +1,13 @@
 @extends('echo365.layouts.master')
 @section('title', $post->title)
 @section('content')
-    <div class="page-top">
+    <div class="mt-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>{{ $post->title }}</h2>
-                    <nav class="breadcrumb-container">
-                        <ol class="breadcrumb">
+                    <h2 class="mb-4">{{ $post->title }}</h2>
+                    <nav class="breadcrumb mb-4 border-top border-bottom">
+                        <ol class="breadcrumb m-0 py-2">
                             <li class="breadcrumb-item"><a href="{{ route('echo365.home') }}">Home</a></li>
                             <li class="breadcrumb-item">
                                 <a href="">
@@ -25,13 +25,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-6">
-                    <div class="featured-photo">
-                        <img src="{{ asset('uploads/' . $post->image) }}" alt="{{ $post->image }}">
+                    <div class="mb-4">
+                        <img src="{{ asset('uploads/' . $post->image) }}" alt="{{ $post->image }}" class="img-fluid">
                     </div>
-                    <div class="sub">
-                        <div class="item">
-                            <b><i class="fas fa-user"></i></b>
-                            <a href="">
+                    <div class="py-2 border-top border-bottom d-flex text-muted mb-4">
+                        <div class="item me-4">
+                            <b><i class="bi bi-person-fill"></i></i></b>
+                            <a href=""  class="text-dark text-decoration-none">
                                 @if ($post->author_id)
                                     {{ $post->rAuthor->name }}
                                 @elseif($post->admin_id)
@@ -39,16 +39,16 @@
                                 @endif
                             </a>
                         </div>
-                        <div class="item">
-                            <b><i class="fas fa-edit"></i></b>
-                            <a href="">{{ $post->rSubCategory->subcategory_name }}</a>
+                        <div class="item me-4">
+                            <b><i class="bi bi-pencil-square"></i></i></b>
+                            <a href="" class="text-dark text-decoration-none">{{ $post->rSubCategory->subcategory_name }}</a>
+                        </div>
+                        <div class="item me-4">
+                            <b><i class="bi bi-clock-fill"></i></b>
+                            {{ date('d-M-Y', strtotime($post->updated_at)) }}
                         </div>
                         <div class="item">
-                            <b><i class="fas fa-clock"></i></b>
-                            {{ date('d-M-Y', strtotime($post->created_at)) }}
-                        </div>
-                        <div class="item">
-                            <b><i class="fas fa-eye"></i></b>
+                            <b><i class="bi bi-eye-fill"></i></b>
                             {{ $post->visitors }}
                         </div>
                     </div>

@@ -1,39 +1,96 @@
-<section class="home-banner my-2">
+<section class="home-banner">
     <div class="container">
-        <div class="p-4 p-md-5 mb-4  text-white featured-post rounded"
-            style="background-image: url('{{ asset('uploads/' . $featured_post[0]->image) }}');">
-            <div class="col-md-6 px-0">
-                <h1 class="display-6 fst-italic">{{ $featured_post[0]->title }}</h1>
-                <p class="lead my-3">{{ Str::words($featured_post[0]->detail, 15, '...') }}</p>
-                <p class="lead mb-0"><a href="{{ route('echo365.post', $featured_post[0]->id) }}"
-                        class="text-white post-link">Continue reading...</a></p>
-
-            </div>
-        </div>
-    </div>
-</section>
-<section class="home-featured">
-    <div class="container">
-        <div class="row mb-2">
-            <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col py-4 ps-4 position-relative featured-post-text">
-                        <strong class="d-inline-block mb-2 text-primary">World</strong>
-                        <h3 class="mb-0">Featured post</h3>
-                        <div class="mb-1 text-muted">Nov 12</div>
-                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to
-                            additional content.</p>
-                        <a href="#" class="stretched-link">Continue reading</a>
-                        <div class="featured-post-image d-none d-lg-block border">
-                            <img src="{{ asset('uploads/'.$featured_post[0]->image) }}"  alt="">
+        <div class="row">
+            @foreach ($latest_post as $post)
+                <div class="col-12">
+                    <div class="p-5 p-md-5 mb-4  text-white latest-post rounded"
+                        style="background-image: url('{{ asset('uploads/' . $post->image) }}');">
+                        <div class="col-md-6 px-0">
+                            <h1 class="display-6 fst-italic">{{ $post->title }}</h1>
+                            <p class="lead my-3">{{ Str::words($post->detail, 15, '...') }}</p>
+                            <p class="lead mb-0"><a href="{{ route('echo365.post', $post->id) }}"
+                                    class="text-white post-link">Continue reading...</a></p>
                         </div>
                     </div>
                 </div>
+                {{-- skip the remaining post using break statement --}}
+                @break($loop->remaining)
+            @endforeach
+        </div>
+
+    </div>
+</section>
+<section class="home-latest">
+    <div class="container">
+        <div class="row mb-2">
+            <div class="col-12">
+                <h3 class="pb-4 mb-4 fst-italic border-bottom">
+                    Latest
+                </h3>
             </div>
+
+            @foreach ($latest_post as $post)
+                {{-- skip the first post using continue statement --}}
+                @continue($loop->first)
+                <div class="col-md-6">
+                    <div
+                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col py-4 ps-4 position-relative latest-post-text">
+                            <strong
+                                class="d-inline-block mb-2 fst-italic text-success">{{ $post->rSubCategory->subcategory_name }}</strong>
+                            <h3 class="mb-0">{{ $post->title }}</h3>
+                            <div class="mb-1 text-muted">{{ date('d-M-Y', strtotime($post->updated_at)) }}</div>
+                            <p class="card-text mb-auto">{{ Str::words($post->detail, 10, '...') }}</p>
+                            <a href="{{ route('echo365.post', $post->id) }}"
+                                class="stretched-link post-link text-dark">Continue reading</a>
+                            <div class="latest-post-image d-none d-lg-block">
+                                <img src="{{ asset('uploads/' . $post->image) }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
         </div>
     </div>
-   
+
 </section>
+
+
+<section class="home-featured">
+    <div class="container">
+        <div class="row mb-2">
+            <div class="col-12">
+                <h3 class="pb-4 mb-4 fst-italic border-bottom">
+                    Featured
+                </h3>
+            </div>
+            @forelse ($featured_post as $post)
+                <div class="col-md-6">
+                    <div
+                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col py-4 ps-4 position-relative featured-post-text">
+                            <strong
+                                class="d-inline-block mb-2 fst-italic text-success">{{ $post->rSubCategory->subcategory_name }}</strong>
+                            <h3 class="mb-0">{{ $post->title }}</h3>
+                            <div class="mb-1 text-muted">{{ date('d-M-Y', strtotime($post->updated_at)) }}</div>
+                            <p class="card-text mb-auto">{{ Str::words($post->detail, 10, '...') }}</p>
+                            <a href="{{ route('echo365.post', $post->id) }}"
+                                class="stretched-link post-link text-dark">Continue reading</a>
+                            <div class="featured-post-image d-none d-lg-block">
+                                <img src="{{ asset('uploads/' . $post->image) }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <p class="mb-4 ">No featured post</p>
+            @endforelse
+
+        </div>
+    </div>
+</section>
+
 
 <div class="home-main">
     <div class="container">
