@@ -5,10 +5,10 @@
             @if ($ad->sidebar_ad_status == 'show')
                 <div class="ad-sidebar">
                     @if ($ad->sidebar_ad_url == '')
-                        <img src="{{ asset('uploads/' . $ad->sidebar_ad) }}" alt="sidebar_top_ad">
+                        <img src="{{ asset('uploads/' . $ad->sidebar_ad) }}" alt="sidebar_top_ad" class="img-fluid">
                     @else
                         <a href="{{ asset('uploads/' . $ad->sidebar_ad_url) }}">
-                            <img src="{{ asset('uploads/' . $ad->sidebar_ad) }}" alt="sidebar_down_ad">
+                            <img src="{{ asset('uploads/' . $ad->sidebar_ad) }}" alt="sidebar_down_ad" class="img-fluid">
                         </a>
                     @endif
                 </div>
@@ -79,7 +79,7 @@
                 <h2>Live Channel - RT News</h2>
             </div>
             <div class="live-channel-item">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/V0I5eglJMRI"
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/V0I5eglJMRI"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
@@ -280,10 +280,10 @@
             @if ($ad->sidebar_ad_status == 'show')
                 <div class="ad-sidebar">
                     @if ($ad->sidebar_ad_url == '')
-                        <img src="{{ asset('uploads/' . $ad->sidebar_ad) }}" alt="sidebar_down_ad">
+                        <img src="{{ asset('uploads/' . $ad->sidebar_ad) }}" alt="sidebar_down_ad" class="img-fluid">
                     @else
                         <a href="{{ asset('uploads/' . $ad->sidebar_ad_url) }}">
-                            <img src="{{ asset('uploads/' . $ad->sidebar_ad) }}" alt="sidebar_down_ad">
+                            <img src="{{ asset('uploads/' . $ad->sidebar_ad) }}" alt="sidebar_down_ad" class="img-fluid">
                         </a>
                     @endif
                 </div>

@@ -2,19 +2,19 @@
 
 	"use strict";
 
-	$(".scroll-top").hide();
-	$(window).on("scroll", function () {
-		if ($(this).scrollTop() > 300) {
-			$(".scroll-top").fadeIn();
-		} else {
-			$(".scroll-top").fadeOut();
-		}
-	});
-	$(".scroll-top").on("click", function () {
-		$("html, body").animate({
-			scrollTop: 0,
-		}, 700)
-	});
+	// $(".scroll-top").hide();
+	// $(window).on("scroll", function () {
+	// 	if ($(this).scrollTop() > 300) {
+	// 		$(".scroll-top").fadeIn();
+	// 	} else {
+	// 		$(".scroll-top").fadeOut();
+	// 	}
+	// });
+	// $(".scroll-top").on("click", function () {
+	// 	$("html, body").animate({
+	// 		scrollTop: 0,
+	// 	}, 700)
+	// });
 
     $('#webTicker').webTicker({
         transition: "linear"

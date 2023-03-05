@@ -21,7 +21,7 @@
         </section>
     @endif
     {{-- home banner  --}}
-    @include('echo365.section.home-banner')
+    @include('echo365.section.home-content')
 
     @if ($home_ad_data->above_search_ad_status == 'show')
         <div class="ad-section-2 above-search-ad">
@@ -41,14 +41,6 @@
             </div>
         </div>
     @endif
-
-
-
-    {{-- search content   --}}
-    @include('echo365.section.home-search')
-
-    {{-- home content   --}}
-    @include('echo365.section.home-content')
 
 
     {{-- video content  --}}

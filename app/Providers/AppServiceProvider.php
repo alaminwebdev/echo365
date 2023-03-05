@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\SidebarAd;
 use App\Models\TopAd;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrapFive();
         $top_ad_data = TopAd::findOrFail(1);
         view()->share('global_top_ad', $top_ad_data);
 

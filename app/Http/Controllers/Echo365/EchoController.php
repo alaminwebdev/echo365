@@ -27,8 +27,14 @@ class EchoController extends Controller
             ->where('is_featured', 1)
             ->latest()
             ->get(['id','title','updated_at','image','subcategory_id']);
-        
         //dd($featured_post);
+
+
+        // $subcategoris = SubCategory::with(['rPost'=> function($query){
+        //     $query->latest()->get(['id','title','image','subcategory_id']);
+        // }])
+        // ->where('subcategory_show', 'show')
+        // ->get(['id','subcategory_name']);
 
         $subcategoris = SubCategory::with('rPost:id,title,image,subcategory_id')
         ->where('subcategory_show', 'show')
@@ -54,6 +60,12 @@ class EchoController extends Controller
         $post->update();
 
         return view('echo365.pages.post', compact('post'));
+    }
+
+    public function postBySubCategory($id){
+        $posts = Post::with('rSubCategory:id,subcategory_name')->where('subcategory_id',$id)->latest()->paginate(4);
+        //dd($posts);
+        return view('echo365.pages.category', compact('posts'));
     }
 
     public function about()

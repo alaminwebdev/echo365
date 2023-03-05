@@ -13,6 +13,6 @@ class SubCategory extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
     public function rPost(){
-        return $this->hasMany(Post::class, 'subcategory_id');
+        return $this->hasMany(Post::class, 'subcategory_id')->latest();
     }
 }
