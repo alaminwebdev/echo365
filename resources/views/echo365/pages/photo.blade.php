@@ -15,18 +15,15 @@
                                 </div>
                             </div>
                             @foreach ($photos as $photo)
-                                <div class="col-md-6">
-                                    <div
-                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                        <div class="col py-4 ps-4 position-relative featured-post-text">
-                                            <h3 class="mb-1">{{ $photo->caption }}</h3>
-                                            <div class="mb-1 text-muted">
-                                                {{ date('h:i a, d F', strtotime($photo->updated_at)) }}</div>
-                                            <a href="#"
-                                                class="stretched-link post-link text-dark">Continue reading</a>
-                                            <div class="featured-post-image d-none d-lg-block">
-                                                <img src="{{ asset('uploads/' . $photo->photo) }}" alt="">
-                                            </div>
+                                <div class="col-lg-6 col-md-12 col-sm-6">
+                                    <div class="px-4 py-5 mb-4  text-white latest-post rounded"
+                                        style="background-image: url('{{ asset('uploads/' . $photo->photo) }}');">
+                                        <div class="px-0 pt-4">
+                                            <p class="fs-5 fst-italic">
+                                                <a href="{{ asset('uploads/' . $photo->photo) }}" class="text-white post-link magnific"  title="{{ $photo->caption }}">
+                                                    {{ Str::limit($photo->caption, 50, '...') }}
+                                                </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

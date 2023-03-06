@@ -2,7 +2,7 @@
     <header class="lh-1 py-3 border-bottom">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 d-none d-sm-block  pt-1">
-                <p> <i class="bi bi-calendar-fill"></i> Today: January 20, 2023</p>
+                <p> <i class="bi bi-calendar-fill pe-1"></i>Today : {{ date('d F,Y') }}</p>
             </div>
             <div class="col-4 text-center">
                 <a class="blog-header-logo text-dark" href="{{ route('echo365.home') }}">echo365</a>
@@ -25,9 +25,9 @@
 <section>
     <div class="container my-2">
         <div class="row">
-            <div class="col-12 ">
+            <div class="col-12 mx-auto">
                 @if ($global_top_ad->top_ad_status == 'show')
-                    <div class="ad-section-1 top-ad">
+                    <div class="ad-section-1 top-ad text-center">
                         @if ($global_top_ad->top_ad_url == '')
                             <img src="{{ asset('uploads/' . $global_top_ad->top_ad) }}" alt="top-ad"
                                 class="img-fluid rounded">
@@ -55,28 +55,27 @@
                     <a class="nav-link {{ request()->routeIs('echo365.home') ? 'active' : '' }}" aria-current="page"
                         href="{{ route('echo365.home') }}">Home</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-                        href="#">Sports</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Cricket</a></li>
-                        <li><a class="dropdown-item" href="#">Football</a></li>
-                        <li><a class="dropdown-item" href="#">Tenis</a></li>
-                    </ul>
-
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        National
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Dhaka</a></li>
-                        <li><a class="dropdown-item" href="#">Khulna</a></li>
-                        <li><a class="dropdown-item" href="#">Sylhet</a></li>
-                    </ul>
+                @foreach ($navbars as $category)
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"
+                            role="button" 
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false" 
+                            href="javascript:void(0)">{{ $category->category_name }}</a>
+                        <ul class="dropdown-menu">
+                            @foreach ($category->rSubCategory as $subcategory)
+                                <li><a class="dropdown-item" href="{{ route('echo365.subcategory', $subcategory->id) }}">{{ $subcategory->subcategory_name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                @endforeach
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('echo365.photos') ? 'active' : '' }}" aria-current="page"
+                        href="{{ route('echo365.photos') }}">Photos</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+

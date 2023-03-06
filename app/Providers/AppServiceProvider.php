@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use App\Models\SidebarAd;
 use App\Models\TopAd;
 use Illuminate\Pagination\Paginator;
@@ -27,6 +28,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrapFive();
+
+        $navbars = Category::with('rSubCategory:id,subcategory_name,category_id')
+        ->where('category_show', 'show')
+        ->orderBy('category_order', 'asc')
+        ->get(['id','category_name']);
+    
+        view()->share('navbars', $navbars);
+
         $top_ad_data = TopAd::findOrFail(1);
         view()->share('global_top_ad', $top_ad_data);
 

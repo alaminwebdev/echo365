@@ -10,11 +10,16 @@
                             <div class="col-12">
                                 <div class="d-flex justify-content-between align-items-center pb-4 mb-4 border-bottom">
                                     <h3 class="fst-italic ">
-                                        {{ $posts[0]->rSubcategory->subcategory_name }}
+                                        @forelse ($posts as $post)
+                                            {{ $post->rSubCategory->subcategory_name }}
+                                            @break($loop->remaining)
+                                            @empty
+                                            No post found !
+                                        @endforelse
                                     </h3>
                                 </div>
                             </div>
-                            @foreach ($posts as $post)
+                            @forelse ($posts as $post)
                                 <div class="col-12">
                                     <div
                                         class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -32,7 +37,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            @empty
+                                <p class="mb-4 ">There is no post found in this category !</p>
+                            @endforelse
                             {{ $posts->onEachSide(2)->links() }}
                         </div>
                     </div>

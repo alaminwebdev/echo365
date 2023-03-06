@@ -10,7 +10,7 @@
                         <ol class="breadcrumb m-0 py-2">
                             <li class="breadcrumb-item"><a href="{{ route('echo365.home') }}">Home</a></li>
                             <li class="breadcrumb-item">
-                                <a href="">
+                                <a href="{{ route('echo365.subcategory', $post->rSubCategory->id) }}">
                                     {{ $post->rSubCategory->subcategory_name }}
                                 </a>
                             </li>

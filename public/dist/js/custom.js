@@ -20,6 +20,14 @@
         transition: "linear"
     });
 
+    $('.magnific').magnificPopup({
+        type: 'image',
+      gallery:{
+          enabled:true
+      }
+  });
+
+
     // $('.my-news-ticker').AcmeTicker({
 	// 	type:'typewriter',
 	// 	direction: 'right',
@@ -47,12 +55,7 @@
 		}
 	});
 
-	$('.magnific').magnificPopup({
-	  	type: 'image',
-		gallery:{
-			enabled:true
-		}
-	});
+	
 
 
 	$('.related-post-carousel').owlCarousel({

@@ -169,7 +169,7 @@
                                         </div>
                                     </div>
                                 @empty
-                                    <p class="mb-4 ">No post yet</p>
+                                    <p class="mb-4 ">No post found !</p>
                                 @endforelse
                             </div>
                         </div>
