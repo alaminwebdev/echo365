@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Echo365;
 
 use App\Http\Controllers\Controller;
 use App\Models\HomeAd;
+use App\Models\Photo;
 use App\Models\Post;
 use App\Models\SubCategory;
 use App\Models\Ticker;
@@ -66,6 +67,12 @@ class EchoController extends Controller
         $posts = Post::with('rSubCategory:id,subcategory_name')->where('subcategory_id',$id)->latest()->paginate(4);
         //dd($posts);
         return view('echo365.pages.category', compact('posts'));
+    }
+
+    public function photos(){
+        $photos = Photo::latest()->paginate(4);
+        //dd($photos);
+        return view('echo365.pages.photo', compact('photos'));
     }
 
     public function about()

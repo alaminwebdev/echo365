@@ -112,6 +112,14 @@
             </li>
           </ul>
         </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.photo.home') }}" class="nav-link {{ request()->routeIs('admin.photo.*') ? 'active' : '' }}">
+            <i class="fa-solid fa-newspaper nav-icon"></i>
+            <p>
+              Photos
+            </p>
+          </a>
+        </li>
 
 
         <li class="nav-header">MISCELLANEOUS</li>

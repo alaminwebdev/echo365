@@ -1,14 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Echo365\EchoController;
+
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\TickerController;
 use App\Http\Controllers\Admin\AdController;
 use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
-use App\Http\Controllers\Echo365\EchoController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\PhotoController;
 
 
 // echo365 - front end section
@@ -16,7 +18,9 @@ Route::get('/', [EchoController::class, 'index'])->name('echo365.home');
 Route::get('/about', [EchoController::class, 'about'])->name('echo365.about');
 Route::get('post/{id}', [EchoController::class, 'post'])->name('echo365.post');
 Route::get('/category/{id}', [EchoController::class, 'postBySubCategory'])->name('echo365.subcategory');
+Route::get('/photos',[EchoController::class, 'photos'])->name('echo365.photos');
 Route::get('/contact', [EchoController::class, 'contact'])->name('echo365.contact');
+
 
 
 // Admin section
@@ -88,3 +92,12 @@ Route::get('admin/tag-destroy/{id}/{post_id}', [PostController::class, 'tag_dest
 // Tiker section
 Route::get('admin/ticker', [TickerController::class, 'index'])->name('admin.ticker.home');
 Route::any('admin/ticker-update/', [TickerController::class, 'update'])->name('admin.ticker.update');
+
+
+// Photo section
+Route::get('admin/photo', [PhotoController::class, 'index'])->name('admin.photo.home');
+Route::get('admin/photo-create', [PhotoController::class, 'create'])->name('admin.photo.create');
+Route::any('admin/photo-store', [PhotoController::class, 'store'])->name('admin.photo.store');
+Route::get('admin/photo-show/{id}', [PhotoController::class, 'show'])->name('admin.photo.show');
+Route::any('admin/photo-update/', [PhotoController::class, 'update'])->name('admin.photo.update');
+Route::get('admin/photo-destroy/{id}', [PhotoController::class, 'destroy'])->name('admin.photo.destroy');
