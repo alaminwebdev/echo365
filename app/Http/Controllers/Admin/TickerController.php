@@ -78,7 +78,7 @@ class TickerController extends Controller
             $tickers->ticker_count = $request->ticker_count;
             $tickers->ticker_status = $request->ticker_status;
             $tickers->update();
-            return redirect()->route('admin.ticker.home')->with('success', 'Data updated successfully !');
+            return redirect()->route('ticker.index')->with('success', 'Data updated successfully !');
         }
     }
 

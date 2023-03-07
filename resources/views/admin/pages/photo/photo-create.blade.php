@@ -25,7 +25,7 @@
                             <h3 class="card-title">Add Photo</h3>
                         </div>
                         <!-- form start -->
-                        <form action="{{ route('admin.photo.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('photo.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">

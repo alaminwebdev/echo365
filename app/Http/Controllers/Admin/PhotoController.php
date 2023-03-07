@@ -54,7 +54,7 @@ class PhotoController extends Controller
             $photo->caption = $request->caption;
             $photo->save();
 
-            return redirect()->route('admin.photo.home')->with('success', 'Photo uploaded successfully !');
+            return redirect()->route('photo.index')->with('success', 'Photo uploaded successfully !');
             
 
         }
@@ -90,7 +90,7 @@ class PhotoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request) 
     {
         //dd($request->all());
         if($request->isMethod('post')){
@@ -119,7 +119,7 @@ class PhotoController extends Controller
 
             $photo->caption = $request->caption;
             $photo->update();
-            return redirect()->route('admin.photo.home')->with('success', 'Photo updated successfully !');
+            return redirect()->route('photo.index')->with('success', 'Photo updated successfully !');
             
         }
     }
@@ -140,6 +140,6 @@ class PhotoController extends Controller
             unlink($photo_path);
         }
         $photo->delete();
-        return redirect()->route('admin.photo.home')->with('success', 'Photo deleted successfully !');
+        return redirect()->route('photo.index')->with('success', 'Photo deleted successfully !');
     }
 }

@@ -25,7 +25,7 @@
                             <h3 class="card-title">Update Photo</h3>
                         </div>
                         <!-- form start -->
-                        <form action="{{ route('admin.photo.update') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('photo.update') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="id" value="{{ $photo->id }}">
                             <div class="card-body">

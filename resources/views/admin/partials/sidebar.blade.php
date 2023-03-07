@@ -51,7 +51,7 @@
         </li>
 
         <li class="nav-item">
-          <a href="{{ route('admin.ticker.home') }}" class="nav-link {{ request()->routeIs('admin.ticker.*') ? 'active' : '' }}">
+          <a href="{{ route('ticker.index') }}" class="nav-link {{ request()->routeIs('ticker.*') ? 'active' : '' }}">
             <i class="fa-solid fa-newspaper nav-icon"></i>
             <p>
               News Ticker
@@ -113,7 +113,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a href="{{ route('admin.photo.home') }}" class="nav-link {{ request()->routeIs('admin.photo.*') ? 'active' : '' }}">
+          <a href="{{ route('photo.index') }}" class="nav-link {{ request()->routeIs('photo.*') ? 'active' : '' }}">
             <i class="fa-solid fa-newspaper nav-icon"></i>
             <p>
               Photos

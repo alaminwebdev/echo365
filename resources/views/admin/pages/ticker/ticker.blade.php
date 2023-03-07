@@ -6,7 +6,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <form action="{{ route('admin.ticker.update') }}" method="post">
+            <form action="{{ route('ticker.update') }}" method="post">
                 @csrf
                 <input type="hidden" name="tickers_id" value="{{ $tickers->id }}">
                 <div class="row justify-content-center">

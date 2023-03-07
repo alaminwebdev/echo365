@@ -16,7 +16,7 @@
                     @endif
                     <div class="card">
                         <div class="card-header text-right">
-                            <a type="button" class="btn bg-gradient-success"href="{{ route('admin.photo.create') }}">
+                            <a type="button" class="btn bg-gradient-success"href="{{ route('photo.create') }}">
                                 <i class="fas fa-plus"></i> Add
                             </a>
                         </div>
@@ -45,10 +45,10 @@
                                             <td>
                                                 <div class="btn-group" role="group"
                                                     aria-label="Basic mixed styles example">
-                                                    <a href="{{ route('admin.photo.show', $photo->id) }}" class="btn btn-sm btn-info">
+                                                    <a href="{{ route('photo.show', $photo->id) }}" class="btn btn-sm btn-info">
                                                         <i class="icon fas fa-edit"></i>
                                                     </a>
-                                                    <a href="{{ route('admin.photo.destroy', $photo->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete this Photo ?')">
+                                                    <a href="{{ route('photo.destroy', $photo->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete this Photo ?')">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </a>
                                                 </div>
