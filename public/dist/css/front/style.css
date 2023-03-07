@@ -36,13 +36,13 @@ h6 {
 	text-decoration: none;
 }
 
-.latest-post{
+.latest-post, .category-post{
 	position: relative;
 	background-repeat: no-repeat;
 	background-size: cover;
 	z-index: 1;
 }
-.latest-post::before {
+.latest-post::before, .category-post::before {
     position: absolute;
     content: '';
     width: 100%;
@@ -50,14 +50,14 @@ h6 {
     top: 0;
     left: 0;
 	z-index: -1;
-    background: #1dc175 ;
+    background: #007777 ;
 	border-radius: inherit;
     mask-image: linear-gradient(transparent, #fff);
     -webkit-mask-image: linear-gradient(transparent, #fff);
     -moz-mask-image: linear-gradient(transparent, #fff);
     -o-mask-image: linear-gradient(transparent, #fff);
 }
-.latest-post::after{
+.latest-post::after , .category-post::after{
 	position: absolute;
 	content: '';
 	width: 100%;

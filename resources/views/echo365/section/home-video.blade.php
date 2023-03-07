@@ -1,10 +1,10 @@
 <div class="video-content">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="video-heading">
-                    <h2>Videos</h2>
-                </div>
+            <div class="col-12">
+                <h3 class="pb-4 mb-4 fst-italic border-bottom">
+                    Video
+                </h3>
             </div>
         </div>
         <div class="row">

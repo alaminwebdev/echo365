@@ -1,85 +1,76 @@
-<div class="footer">
+<section class="bg-light-subtle">
     <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="item">
-                    <h2 class="heading">About Us</h2>
-                    <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                        galley of type and scrambled it to make a type specimen book.
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="item">
-                    <h2 class="heading">Useful Links</h2>
-                    <ul class="useful-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="terms.html">Terms and Conditions</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="disclaimer.html">Disclaimer</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+        <footer class="pt-5">
+            <div class="row">
+                <div class="col-6 col-md-2">
+                    <h5 class="mb-2">Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
                     </ul>
                 </div>
-            </div>
-
-
-            <div class="col-md-3">
-                <div class="item">
-                    <h2 class="heading">Contact</h2>
-                    <div class="list-item">
-                        <div class="left">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="right">
-                            34 Antiger Lane,<br>
-                            PK Lane, USA, 12937
-                        </div>
-                    </div>
-                    <div class="list-item">
-                        <div class="left">
-                            <i class="far fa-envelope"></i>
-                        </div>
-                        <div class="right">
-                            contact@alamin.com
-                        </div>
-                    </div>
-                    <div class="list-item">
-                        <div class="left">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="right">
-                            122-222-1212
-                        </div>
-                    </div>
-                    <ul class="social">
-                        <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                        <li><a href=""><i class="fab fa-pinterest-p"></i></a></li>
-                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+    
+                <div class="col-6 col-md-2 mb-3">
+                    <h5 class="mb-2">Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="item">
-                    <h2 class="heading">Newsletter</h2>
-                    <p>
-                        In order to get the latest news and other great items, please subscribe us here:
-                    </p>
-                    <form action="" method="post">
-                        <div class="form-group">
-                            <input type="text" name="" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Subscribe Now">
+    
+                <div class="col-6 col-md-2 mb-3">
+                    <h5 class="mb-2">Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                    </ul>
+                </div>
+    
+                <div class="col-md-5 offset-md-1 mb-3">
+                    <form>
+                        <h5 class="mb-2">Subscribe to our newsletter</h5>
+                        <p class="mb-2">Monthly digest of what's new and exciting from us.</p>
+                        <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                            <label for="newsletter1" class="visually-hidden">Email address</label>
+                            <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
                         </div>
                     </form>
                 </div>
             </div>
-
-        </div>
+    
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center py-4 border-top">
+                <p>© 2022 Company, Inc. All rights reserved.</p>
+                <ul class="list-unstyled d-flex m-0">
+                    
+                    <li class="ms-3">
+                        <a class="link-dark" href="#">
+                            <i class="bi bi-facebook" style="font-size: 24px"></i>
+                        </a>
+                    </li>
+                    <li class="ms-3">
+                        <a class="link-dark" href="#">
+                            <i class="bi bi-linkedin" style="font-size: 24px"></i>
+                        </a>
+                    </li>
+                    <li class="ms-3">
+                        <a class="link-dark" href="#">
+                            <i class="bi bi-youtube" style="font-size: 24px"></i>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </footer>
     </div>
-</div>
+</section>
+

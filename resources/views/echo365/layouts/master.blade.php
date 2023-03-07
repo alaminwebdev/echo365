@@ -12,10 +12,6 @@
 
     @include('echo365.partials.footer')
 
-    <div class="copyright">
-        Copyright 2022, Alamin. All Rights Reserved.
-    </div>
-
     <div class="scroll-top">
         <i class="fas fa-angle-up"></i>
     </div>

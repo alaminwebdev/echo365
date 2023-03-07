@@ -4,7 +4,7 @@
     <section class="subcategory-content mt-4">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
@@ -13,27 +13,26 @@
                                         @forelse ($posts as $post)
                                             {{ $post->rSubCategory->subcategory_name }}
                                             @break($loop->remaining)
-                                            @empty
+                                        @empty
                                             No post found !
                                         @endforelse
                                     </h3>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row" data-masonry='{"percentPosition": true }'>
                             @forelse ($posts as $post)
-                                <div class="col-12">
-                                    <div
-                                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                                        <div class="col py-4 ps-4 position-relative featured-post-text">
-                                            <strong
-                                                class="d-inline-block mb-2 fst-italic text-success">{{ $post->rSubcategory->subcategory_name }}</strong>
-                                            <h3 class="mb-1">{{ $post->title }}</h3>
-                                            <div class="mb-1 text-muted">
+                                <div class="col-md-4">
+                                    <div class="p-4 mb-4  text-white category-post rounded"
+                                        style="background-image: url('{{ asset('uploads/' . $post->image) }}');">
+                                        <div class="ps-0 pe-4 pt-4">
+                                            <h4 class="fst-italic">{{ Str::limit($post->title, 50, '...') }}</h4>
+                                            <div class="mb-1 text- text-white">
                                                 {{ date('h:i a, d F', strtotime($post->updated_at)) }}</div>
-                                            <a href="{{ route('echo365.post', $post->id) }}"
-                                                class="stretched-link post-link text-dark">Continue reading</a>
-                                            <div class="featured-post-image d-none d-lg-block">
-                                                <img src="{{ asset('uploads/' . $post->image) }}" alt="">
-                                            </div>
+                                            <p class="lead mb-0">
+                                                <a href="{{ route('echo365.post', $post->id) }}"
+                                                    class="text-white post-link stretched-link">Continue reading...</a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -43,9 +42,6 @@
                             {{ $posts->onEachSide(2)->links() }}
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    {{-- @include('echo365.section.sidebar-content') --}}
                 </div>
             </div>
         </div>

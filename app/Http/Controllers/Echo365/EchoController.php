@@ -64,7 +64,7 @@ class EchoController extends Controller
     }
 
     public function postBySubCategory($id){
-        $posts = Post::with('rSubCategory:id,subcategory_name')->where('subcategory_id',$id)->latest()->paginate(4);
+        $posts = Post::with('rSubCategory:id,subcategory_name')->where('subcategory_id',$id)->latest()->paginate(6);
         //dd($posts);
         return view('echo365.pages.category', compact('posts'));
     }
