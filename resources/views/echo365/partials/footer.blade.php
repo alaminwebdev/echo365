@@ -1,9 +1,9 @@
 <section class="bg-light-subtle mt-auto">
     <div class="container">
-        <footer class="pt-5">
-            <div class="row">
-                <div class="col-6 col-md-2">
-                    <h5 class="mb-2">Section</h5>
+        <footer class="pt-4">
+            <div class="d-flex flex-column flex-md-row justify-content-evenly">
+                <div class="mb-2">
+                    <h5 class="mb-2">Categories</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
@@ -13,29 +13,17 @@
                     </ul>
                 </div>
     
-                <div class="col-6 col-md-2 mb-3">
-                    <h5 class="mb-2">Section</h5>
+                <div class="mb-2">
+                    <h5 class="mb-2">Usefull Links</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Advertise</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Terms of Service</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Privacy Policy</a></li>
+                        <li class="nav-item mb-2"><a href="{{ route('echo365.contact') }}" class="nav-link p-0 text-muted">Contact Us</a></li>
                     </ul>
                 </div>
     
-                <div class="col-6 col-md-2 mb-3">
-                    <h5 class="mb-2">Section</h5>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-                    </ul>
-                </div>
-    
-                <div class="col-md-5 offset-md-1 mb-3">
+                <div class="mb-4">
                     <form>
                         <h5 class="mb-2">Subscribe to our newsletter</h5>
                         <p class="mb-2">Monthly digest of what's new and exciting from us.</p>

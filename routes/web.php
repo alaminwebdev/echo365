@@ -21,7 +21,8 @@ Route::controller(EchoController::class)->group(function () {
     Route::get('post/{id}', 'post')->name('echo365.post');
     Route::get('/category/{id}', 'postBySubCategory')->name('echo365.subcategory');
     Route::get('/photos', 'photos')->name('echo365.photos');
-    Route::get('/contact', 'contact')->name('echo365.contact');
+    Route::get('contact', 'contact')->name('echo365.contact');
+    Route::post('contact', 'contact_store')->name('contact.store');
 });
 
 

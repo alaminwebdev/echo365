@@ -83,5 +83,14 @@ class EchoController extends Controller
     public function contact()
     {
         return view('echo365.pages.contact');
+
+    }
+    public function contact_store(Request $request){
+        //dd($request->all());
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'message' => 'required'
+        ]);
     }
 }

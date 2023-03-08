@@ -9,7 +9,6 @@
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
                 <button type="button" class="btn btn-sm btn-light text-dark me-2">Login</button>
-                <button type="button" class="btn btn-sm btn-primary me-2">Sign-up</button>
                 <select class="form-select form-select-sm" style="display: inline; width:auto">
                     <option value="1">English</option>
                     <option value="2">Bangla</option>

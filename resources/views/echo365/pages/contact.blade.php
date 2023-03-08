@@ -1,51 +1,55 @@
 @extends('echo365.layouts.master')
 @section('title', 'Contact')
 @section('content')
-    <div class="page-top">
+    <section class="my-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <h2>Contact</h2>
-                    <nav class="breadcrumb-container">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('echo365.home') }}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Contact</li>
-                        </ol>
-                    </nav>
+                <div class="col-12">
+                    <h3 class="pb-4 mb-4 fst-italic border-bottom">
+                        Contact
+                    </h3>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="page-content">
-        <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-12">
-                    <div class="contact-form">
+                <div class="col-sm-12 col-md-12 col-lg-6">
+                    <form action="{{ route('contact.store') }}" method="post">
+                        @csrf
                         <div class="mb-3">
                             <label for="" class="form-label">Name</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name">
+                            @error('name')
+                                <span class="text-danger-emphasis fs-7">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Email Address</label>
-                            <input type="text" class="form-control">
+                            <label for="" class="form-label">Email
+                                Address</label>
+                            <input type="text" class="form-control @error('email') is-invalid @enderror" name="email">
+                            @error('email')
+                                <span class="text-danger-emphasis fs-7">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Message</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control  @error('message') is-invalid @enderror" rows="3" name="message"></textarea>
+                            @error('message')
+                                <span class="text-danger-emphasis fs-7">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary bg-website">Send Message</button>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
-                <div class="col-lg-6 col-md-12">
+                <div class="col-sm-12 col-md-12 col-lg-6">
                     <div class="map">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2799198932!2d-74.25987701513004!3d40.69767006272707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1645362221879!5m2!1sen!2sbd"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d472881.0394459281!2d90.09513619296786!3d22.18754190381334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30aaea308f0afe75%3A0x705fb01d324b1ad6!2sPatuakhali%20District!5e0!3m2!1sen!2sbd!4v1678287178391!5m2!1sen!2sbd"
+                            width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                            class="rounded shadow"></iframe>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 @endsection
