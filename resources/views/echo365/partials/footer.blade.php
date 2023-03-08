@@ -1,4 +1,4 @@
-<section class="bg-light-subtle">
+<section class="bg-light-subtle mt-auto">
     <div class="container">
         <footer class="pt-5">
             <div class="row">

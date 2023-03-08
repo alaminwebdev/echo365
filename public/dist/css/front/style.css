@@ -1,6 +1,9 @@
 body {
 	font-family: "Playfair Display", Georgia, "Times New Roman", serif !important;
 	font-weight: 500;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 p,

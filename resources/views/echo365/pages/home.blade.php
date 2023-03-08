@@ -23,45 +23,26 @@
     {{-- home banner  --}}
     @include('echo365.section.home-content')
 
-    @if ($home_ad_data->above_search_ad_status == 'show')
-        <div class="ad-section-2 above-search-ad">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        @if ($home_ad_data->above_search_ad_url == '')
-                            <img src="{{ asset('uploads/' . $home_ad_data->above_search_ad) }}" alt="above-serach-ad"
-                                class="img-fluid">
-                        @else
-                            <a href="{{ $home_ad_data->above_search_ad_url }}"><img
-                                    src="{{ asset('uploads/' . $home_ad_data->above_search_ad) }}" alt="above-serach-ad"
-                                    class="img-fluid rounded"></a>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
-
 
     {{-- video content  --}}
     @include('echo365.section.home-video')
 
     @if ($home_ad_data->above_footer_ad_status == 'show')
-        <div class="ad-section-3 above-footer-ad">
+        <section class="ad-section-3 above-footer-ad mb-4">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-12 text-center">
                         @if ($home_ad_data->above_footer_ad_url == '')
                             <img src="{{ asset('uploads/' . $home_ad_data->above_footer_ad) }}" alt="above-footer-ad"
-                                class="img-fluid">
+                                class="img-fluid rounded">
                         @else
                         @endif
                         <a href="{{ $home_ad_data->above_footer_ad_url }}"><img
                                 src="{{ asset('uploads/' . $home_ad_data->above_footer_ad) }}" alt="above-footer-ad"
-                                class="img-fluid"></a>
+                                class="img-fluid rounded"></a>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     @endif
 @endsection

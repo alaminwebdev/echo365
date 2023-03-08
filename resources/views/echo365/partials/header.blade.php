@@ -22,10 +22,12 @@
 
 
 
-<section>
-    <div class="container my-2">
+
+
+<section class="ad-section-1 top-ad my-4">
+    <div class="container">
         <div class="row">
-            <div class="col-12 mx-auto">
+            <div class="col-12 text-center">
                 @if ($global_top_ad->top_ad_status == 'show')
                     <div class="ad-section-1 top-ad text-center">
                         @if ($global_top_ad->top_ad_url == '')
@@ -57,14 +59,12 @@
                 </li>
                 @foreach ($navbars as $category)
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"
-                            role="button" 
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false" 
-                            href="javascript:void(0)">{{ $category->category_name }}</a>
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" href="javascript:void(0)">{{ $category->category_name }}</a>
                         <ul class="dropdown-menu">
                             @foreach ($category->rSubCategory as $subcategory)
-                                <li><a class="dropdown-item" href="{{ route('echo365.subcategory', $subcategory->id) }}">{{ $subcategory->subcategory_name }}</a>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('echo365.subcategory', $subcategory->id) }}">{{ $subcategory->subcategory_name }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -78,4 +78,3 @@
         </div>
     </div>
 </nav>
-
