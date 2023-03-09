@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Echo365;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminMail;
+use App\Models\Admin;
 use App\Models\HomeAd;
 use App\Models\Photo;
 use App\Models\Post;
 use App\Models\SubCategory;
 use App\Models\Ticker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class EchoController extends Controller
 {
@@ -87,10 +91,41 @@ class EchoController extends Controller
     }
     public function contact_store(Request $request){
         //dd($request->all());
-        $request->validate([
+
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email',
             'message' => 'required'
         ]);
+     
+        if ($validator->fails()) {
+            
+            return response()->json([
+                'code'=> 0,
+                'error_message'=>$validator->errors()->toArray(),
+            ]);
+     
+            // Also handy: get the array with the errors
+            //$validator->errors();
+     
+            // or, for APIs:
+            //$validator->errors()->toJson();
+        }
+     
+        // Input is valid, continue...
+        $admin = Admin::findOrFail(1);
+        $subject = 'Contact Form';
+        
+        $message = 'Name of the user : '. $request->name .'<br>';
+        $message .= 'Email : ' . $request->email .'<br>';
+        $message .= 'Message  : ' . $request->message;
+        //dd($message);
+
+        Mail::to($admin->email)->send(new AdminMail($subject, $message));
+        return response()->json([
+            'code'=> 1,
+            'success_message'=>'Email is send succesfully !',
+        ]);
+        
     }
 }

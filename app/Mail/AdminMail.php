@@ -32,7 +32,7 @@ class AdminMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('alamiin.bd@gmail.com', 'Mohammad Alamin'),
+            from: new Address('mohammadalamin.dev@gmail.com', 'Mohammad Alamin'),
             subject: $this->subject,
         );
     }

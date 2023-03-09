@@ -12,9 +12,9 @@
 
     @include('echo365.partials.footer')
 
-    <div class="scroll-top">
+    {{-- <div class="scroll-top">
         <i class="fas fa-angle-up"></i>
-    </div>
+    </div> --}}
 
     <!-- All Javascripts -->
     @include('echo365.partials.scripts')

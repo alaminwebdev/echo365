@@ -1,20 +1,5 @@
-(function ($) {
-
-	"use strict";
-
-	// $(".scroll-top").hide();
-	// $(window).on("scroll", function () {
-	// 	if ($(this).scrollTop() > 300) {
-	// 		$(".scroll-top").fadeIn();
-	// 	} else {
-	// 		$(".scroll-top").fadeOut();
-	// 	}
-	// });
-	// $(".scroll-top").on("click", function () {
-	// 	$("html, body").animate({
-	// 		scrollTop: 0,
-	// 	}, 700)
-	// });
+$(document).ready(function () {
+    "use strict";
 
     $('#webTicker').webTicker({
         transition: "linear"
@@ -22,94 +7,43 @@
 
     $('.magnific').magnificPopup({
         type: 'image',
-      gallery:{
-          enabled:true
-      }
-  });
-
-
-    // $('.my-news-ticker').AcmeTicker({
-	// 	type:'typewriter',
-	// 	direction: 'right',
-	// 	speed:50,
-    //     autoplay: 500,
-	// 	controls: {
-	// 		prev: $('.acme-news-ticker-prev'),
-	// 		toggle: $('.acme-news-ticker-pause'),
-	// 		next: $('.acme-news-ticker-next')
-	// 	}
-	// });
-
-	$(document).ready(function() {
-		$('.select2').select2({
-			theme: "bootstrap"
-		});		
-	});
-		
-	new WOW().init();
-
-	$('.video-button').magnificPopup({
-	  	type: 'iframe',
-		gallery:{
-			enabled:true
-		}
-	});
-
-	
-
-
-	$('.related-post-carousel').owlCarousel({
-        loop: false,
-        autoplay: true,
-        autoplayHoverPause: true,
-        autoplaySpeed: 1500,
-        smartSpeed: 1500,
-        margin: 30,
-        mouseDrag: true,
-        nav: true,
-        dots: true,
-        navText: ["<i class='fas fa-angle-left'></i>", "<i class='fas fa-angle-right'></i>"],
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 1
-            },
-            768: {
-                items: 1
-            },
-            992: {
-                items: 2
-            }
+        gallery: {
+            enabled: true
         }
     });
 
-    $('.video-carousel').owlCarousel({
-        loop: false,
-        autoplay: true,
-        autoplayHoverPause: true,
-        autoplaySpeed: 1500,
-        smartSpeed: 1500,
-        margin: 30,
-        mouseDrag: true,
-        nav: true,
-        dots: true,
-        navText: ["<i class='fas fa-angle-left'></i>", "<i class='fas fa-angle-right'></i>"],
-        responsive: {
-            0: {
-                items: 1
+    $('.contact-submit').submit(function(e) {
+        e.preventDefault();
+        $('#loader').show();
+        var form = this;
+        $.ajax({
+            url: $(form).attr('action'),
+            method: $(form).attr('method'),
+            data: new FormData(form),
+            processData: false,
+            dataType: 'json',
+            contentType: false,
+            beforeSend: function() {
+                $(form).find('span.error-text').text('');
             },
-            600: {
-                items: 2
+            success: function(response) {
+                $('#loader').hide();
+                if (response.code == 0) {
+                    $.each(response.error_message, function(prefix, value) {
+                        $(form).find('span.' + prefix + '_error').text(value[
+                        0]);
+                    });
+                } else if (response.code == 1) {
+                    $(form)[0].reset();
+                    console.log(response.success_message);
+                }
             },
-            768: {
-                items: 3
-            },
-            992: {
-                items: 4
-            }
-        }
-    });
+        });
 
-})(jQuery);
+    })
+
+    
+
+    
+
+});
