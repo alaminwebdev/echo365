@@ -45,7 +45,8 @@
                         </div>
                         <div class="item me-4">
                             <b><i class="bi bi-clock-fill"></i></b>
-                            {{ date('d-M-Y', strtotime($post->updated_at)) }}
+                            {{-- {{ date('d-M-Y', strtotime($post->updated_at)) }} --}}
+                            {{  $post->created_at->diffForHumans() }}
                         </div>
                         <div class="item">
                             <b><i class="bi bi-eye-fill"></i></b>

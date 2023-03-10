@@ -33,8 +33,8 @@ class AppServiceProvider extends ServiceProvider
         ->where('category_show', 'show')
         ->orderBy('category_order', 'asc')
         ->get(['id','category_name']);
-    
         view()->share('navbars', $navbars);
+
 
         $top_ad_data = TopAd::findOrFail(1);
         view()->share('global_top_ad', $top_ad_data);

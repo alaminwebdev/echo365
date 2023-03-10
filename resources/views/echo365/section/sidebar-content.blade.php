@@ -20,77 +20,64 @@
 
     <div class=" card p-4 mb-4 ">
         <ul class="nav nav-pills" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active me-4" id="pills-home-tab" data-bs-toggle="pill"
-                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                    aria-selected="true">Home</button>
+            <li class="" role="presentation">
+                <button class=" active me-2 btn btn-sm btn-outline-success" id="pills-popular-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-popular" type="button" role="tab" aria-controls="pills-popular"
+                    aria-selected="true">Popular</button>
             </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+            <li class="" role="presentation">
+                <button class="btn btn-sm btn-outline-success" id="pills-latest-tab" data-bs-toggle="pill" data-bs-target="#pills-latest"
+                    type="button" role="tab" aria-controls="pills-latest" aria-selected="false">Latest</button>
             </li>
         </ul>
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
-                tabindex="0">
-                <div class="card flex-row mt-4 border-0">
-                    <div class="post-image">
-                        <img src="{{ asset('uploads/post1676385447.webp') }}" class="img-fluid rounded"
-                            alt="...">
+            <div class="tab-pane fade show active" id="pills-popular" role="tabpanel"
+                aria-labelledby="pills-popular-tab" tabindex="0">
+                @forelse ($popularPost as $post)
+                    <div class="card flex-row mt-4 border-0">
+                        <div class="post-image">
+                            <img src="{{ asset('uploads/' . $post->image) }}" class="img-fluid rounded" alt="...">
+                        </div>
+                        <div class="card-body p-2">
+                            <p>
+                                <a href="{{ route('echo365.post', $post->id) }}" class="stretched-link text-dark text-decoration-none fs-6">
+                                    {{ Str::limit($post->title, 50, '...') }}
+                                </a>
+                            </p>
+                            <footer class="blockquote-footer m-0 fs-7">Read More</footer>
+                        </div>
                     </div>
-                    <div class="card-body p-2">
-                        <p><a href="#" class="stretched-link text-dark text-decoration-none fs-6">A well-known
-                                quote, contained in a blockquote element.</a></p>
-                        <footer class="blockquote-footer m-0 fs-7">Read More</footer>
+                @empty
+                    <div class="card flex-row mt-4 border-0">
+                        <div class="card-body p-2">
+                            <p><a href="#" class="text-dark text-decoration-none fs-6">No post found !</a></p>
+                        </div>
                     </div>
-                </div>
-                <div class="card flex-row mt-4 border-0">
-                    <div class="post-image">
-                        <img src="{{ asset('uploads/20230205155421.png') }}" class="img-fluid rounded"
-                            alt="...">
-                    </div>
-                    <div class="card-body p-2">
-                        <p><a href="#" class="stretched-link text-dark text-decoration-none fs-6">A well-known
-                                quote, contained in a blockquote element.</a></p>
-                        <footer class="blockquote-footer m-0 fs-7">Read More</footer>
-                    </div>
-                </div>
-                <div class="card flex-row mt-4 border-0">
-                    <div class="post-image">
-                        <img src="{{ asset('uploads/post1676385447.webp') }}" class="img-fluid rounded"
-                            alt="...">
-                    </div>
-                    <div class="card-body p-2">
-                        <p><a href="#" class="stretched-link text-dark text-decoration-none fs-6">A well-known
-                                quote, contained in a blockquote element.</a></p>
-                        <footer class="blockquote-footer m-0 fs-7">Read More</footer>
-                    </div>
-                </div>
+                @endforelse
             </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+            <div class="tab-pane fade" id="pills-latest" role="tabpanel" aria-labelledby="pills-latest-tab"
                 tabindex="0">
-                <div class="card flex-row mt-4 border-0">
-                    <div class="post-image">
-                        <img src="{{ asset('uploads/20230205155421.png') }}" class="img-fluid rounded"
-                            alt="...">
+                @forelse ($latest_post as $post)
+                    <div class="card flex-row mt-4 border-0">
+                        <div class="post-image">
+                            <img src="{{ asset('uploads/' . $post->image) }}" class="img-fluid rounded" alt="...">
+                        </div>
+                        <div class="card-body p-2">
+                            <p>
+                                <a href="{{ route('echo365.post', $post->id) }}" class="stretched-link text-dark text-decoration-none fs-6">
+                                    {{ Str::limit($post->title, 50, '...') }}
+                                </a>
+                            </p>
+                            <footer class="blockquote-footer m-0 fs-7">Read More</footer>
+                        </div>
                     </div>
-                    <div class="card-body p-2">
-                        <p><a href="#" class="stretched-link text-dark text-decoration-none fs-6">A well-known
-                                quote, contained in a blockquote element.</a></p>
-                        <footer class="blockquote-footer m-0 fs-7">Read More</footer>
+                @empty
+                    <div class="card flex-row mt-4 border-0">
+                        <div class="card-body p-2">
+                            <p><a href="#" class="text-dark text-decoration-none fs-6">No post found !</a></p>
+                        </div>
                     </div>
-                </div>
-                <div class="card flex-row mt-4 border-0">
-                    <div class="post-image">
-                        <img src="{{ asset('uploads/20230205155421.png') }}" class="img-fluid rounded"
-                            alt="...">
-                    </div>
-                    <div class="card-body p-2">
-                        <p><a href="#" class="stretched-link text-dark text-decoration-none fs-6">A well-known
-                                quote, contained in a blockquote element.</a></p>
-                        <footer class="blockquote-footer m-0 fs-7">Read More</footer>
-                    </div>
-                </div>
+                @endforelse
             </div>
         </div>
     </div>

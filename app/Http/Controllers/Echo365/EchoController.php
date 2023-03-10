@@ -10,9 +10,11 @@ use App\Models\Photo;
 use App\Models\Post;
 use App\Models\SubCategory;
 use App\Models\Ticker;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+
 
 class EchoController extends Controller
 {
@@ -25,13 +27,13 @@ class EchoController extends Controller
         $latest_post = Post::with('rSubCategory:id,subcategory_name')
         ->latest()
         ->take(5)
-        ->get(['id','title','updated_at','detail','image','subcategory_id']);
+        ->get(['id','title','created_at','detail','image','subcategory_id']);
         //dd($latest_post);
 
         $featured_post = Post::with('rSubCategory:id,subcategory_name')
             ->where('is_featured', 1)
             ->latest()
-            ->get(['id','title','updated_at','image','subcategory_id']);
+            ->get(['id','title','created_at','image','subcategory_id']);
         //dd($featured_post);
 
 
@@ -41,12 +43,23 @@ class EchoController extends Controller
         // ->where('subcategory_show', 'show')
         // ->get(['id','subcategory_name']);
 
-        $subcategoris = SubCategory::with('rPost:id,title,image,subcategory_id')
+        $carboonDate = new Carbon();
+        $now = $carboonDate->now();
+        $nowToLastThreeDays = $carboonDate->now()->subDays(3);
+
+        $popularPost = Post::whereDate('updated_at', '<=', $now)
+        ->whereDate('updated_at', '>=', $nowToLastThreeDays)
+        ->orderBy('visitors', 'desc')
+        ->take(5)
+        ->get(['id','title','image','visitors','updated_at']);
+        //dd($popularPost);
+
+        $subcategoris = SubCategory::with('rPost:id,title,image,subcategory_id,created_at')
         ->where('subcategory_show', 'show')
         ->get(['id','subcategory_name']);
         //dd($subcategoris);
 
-        return view('echo365.pages.home', compact('home_ad_data', 'tickers', 'posts', 'featured_post','latest_post','subcategoris'));
+        return view('echo365.pages.home', compact('home_ad_data', 'tickers', 'posts', 'featured_post','latest_post','subcategoris', 'popularPost'));
     }
 
     public function post($id)
@@ -68,7 +81,7 @@ class EchoController extends Controller
     }
 
     public function postBySubCategory($id){
-        $posts = Post::with('rSubCategory:id,subcategory_name')->where('subcategory_id',$id)->latest()->paginate(6);
+        $posts = Post::with('rSubCategory:id,subcategory_name')->where('subcategory_id',$id)->latest()->paginate(6,['id','subcategory_id','title','image','updated_at']);
         //dd($posts);
         return view('echo365.pages.category', compact('posts'));
     }

@@ -40,7 +40,10 @@
                             <strong
                                 class="d-inline-block mb-2 fst-italic text-success">{{ $post->rSubCategory->subcategory_name }}</strong>
                             <h3 class="mb-1">{{ $post->title }}</h3>
-                            <div class="mb-1 text-muted">{{ date('d-M-Y', strtotime($post->updated_at)) }}</div>
+                            <div class="mb-1 text-muted">
+                                {{-- {{ date('d-M-Y', strtotime($post->updated_at)) }} --}}
+                                {{  $post->created_at->diffForHumans() }}
+                            </div>
                             <p class="card-text mb-auto">{{ Str::words($post->detail, 10, '...') }}</p>
                             <a href="{{ route('echo365.post', $post->id) }}"
                                 class="stretched-link post-link text-dark">Continue reading</a>
@@ -74,7 +77,10 @@
                             <strong
                                 class="d-inline-block mb-2 fst-italic text-success">{{ $post->rSubCategory->subcategory_name }}</strong>
                             <h3 class="mb-1">{{ $post->title }}</h3>
-                            <div class="mb-1 text-muted">{{ date('d-M-Y', strtotime($post->updated_at)) }}</div>
+                            <div class="mb-1 text-muted">
+                                {{-- {{ date('d-M-Y', strtotime($post->updated_at)) }} --}}
+                                {{  $post->created_at->diffForHumans() }}
+                            </div>
                             <a href="{{ route('echo365.post', $post->id) }}"
                                 class="stretched-link post-link text-dark">Continue reading</a>
                             <div class="featured-post-image d-none d-md-block">
@@ -180,7 +186,9 @@
                                                     class="d-inline-block mb-2 fst-italic text-success">{{ $subcategory->subcategory_name }}</strong>
                                                 <h4 class="mb-1">{{ $post->title }}</h4>
                                                 <div class="mb-1 text-muted">
-                                                    {{ date('d-M-Y', strtotime($post->updated_at)) }}</div>
+                                                    {{-- {{ date('d-M-Y', strtotime($post->updated_at)) }} --}}
+                                                    {{  $post->created_at->diffForHumans() }}
+                                                </div>
                                                 <a href="{{ route('echo365.post', $post->id) }}"
                                                     class="stretched-link post-link text-dark">Continue reading</a>
                                                 <div class="featured-post-image d-none d-md-block">
