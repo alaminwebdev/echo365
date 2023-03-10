@@ -36,7 +36,9 @@ $(document).ready(function () {
                 } else if (response.code == 1) {
                     $(form)[0].reset();
                     console.log(response.success_message);
+                    
                 }
+
             },
         });
 

@@ -10,11 +10,15 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class AdminMail extends Mailable
+class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-   
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
     public $subject;
     public $messages;
 
@@ -22,7 +26,7 @@ class AdminMail extends Mailable
     {
         $this->subject = $subject;
         $this->messages = $messages;
-    }
+     }
 
     /**
      * Get the message envelope.
@@ -45,11 +49,8 @@ class AdminMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'admin.pages.profile.email',
-            with:[
-                'emailSubject' => $this->subject,
-                'emailBody' => $this->messages
-            ]
+            view: 'echo365.pages.email',
+            
         );
     }
 

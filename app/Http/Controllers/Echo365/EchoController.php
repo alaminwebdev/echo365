@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Echo365;
 
 use App\Http\Controllers\Controller;
-use App\Mail\AdminMail;
+use App\Mail\ContactMail;
 use App\Models\Admin;
 use App\Models\HomeAd;
 use App\Models\Photo;
@@ -121,10 +121,12 @@ class EchoController extends Controller
         $message .= 'Message  : ' . $request->message;
         //dd($message);
 
-        Mail::to($admin->email)->send(new AdminMail($subject, $message));
+
+        Mail::to($admin->email)->send(new ContactMail($subject, $message));
         return response()->json([
             'code'=> 1,
             'success_message'=>'Email is send succesfully !',
+            
         ]);
         
     }
