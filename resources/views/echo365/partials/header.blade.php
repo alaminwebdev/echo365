@@ -63,7 +63,7 @@
                         <ul class="dropdown-menu">
                             @foreach ($category->rSubCategory as $subcategory)
                                 <li><a class="dropdown-item"
-                                        href="{{ route('echo365.subcategory', $subcategory->id) }}">{{ $subcategory->subcategory_name }}</a>
+                                        href="{{ route('echo365.subcategory', [$subcategory->subcategory_name,$subcategory->id]) }}">{{ $subcategory->subcategory_name }}</a>
                                 </li>
                             @endforeach
                         </ul>

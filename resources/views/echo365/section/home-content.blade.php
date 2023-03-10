@@ -171,7 +171,8 @@
 
                                         </h3>
                                         <a class="btn btn-primary"
-                                            href="{{ route('echo365.subcategory', $subcategory->id) }}"
+                                            href="{{ route('echo365.subcategory', 
+                                            [$subcategory->subcategory_name,$subcategory->id]) }}"
                                             role="button">All News</a>
                                     </div>
                                 </div>

@@ -10,12 +10,7 @@
                             <div class="col-12">
                                 <div class="d-flex justify-content-between align-items-center pb-4 mb-4 border-bottom">
                                     <h3 class="fst-italic ">
-                                        @forelse ($posts as $post)
-                                            {{ $post->rSubCategory->subcategory_name }}
-                                            @break($loop->remaining)
-                                        @empty
-                                            No post found !
-                                        @endforelse
+                                        {{ $name }}
                                     </h3>
                                 </div>
                             </div>

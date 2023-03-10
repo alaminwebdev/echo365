@@ -80,10 +80,10 @@ class EchoController extends Controller
         return view('echo365.pages.post', compact('post'));
     }
 
-    public function postBySubCategory($id){
+    public function postBySubCategory($name,$id){
         $posts = Post::with('rSubCategory:id,subcategory_name')->where('subcategory_id',$id)->latest()->paginate(6,['id','subcategory_id','title','image','updated_at']);
         //dd($posts);
-        return view('echo365.pages.category', compact('posts'));
+        return view('echo365.pages.category', compact('posts', 'name'));
     }
 
     public function photos(){

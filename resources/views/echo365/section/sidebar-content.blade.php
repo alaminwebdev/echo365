@@ -18,8 +18,8 @@
     @endforeach
 
 
-    <div class=" card p-4 mb-4 ">
-        <ul class="nav nav-pills" id="pills-tab" role="tablist">
+    <div class="card p-4 mb-4 ">
+        <ul class="nav nav-pills border-bottom pb-4" id="pills-tab" role="tablist">
             <li class="" role="presentation">
                 <button class=" active me-2 btn btn-sm btn-outline-success" id="pills-popular-tab" data-bs-toggle="pill"
                     data-bs-target="#pills-popular" type="button" role="tab" aria-controls="pills-popular"
