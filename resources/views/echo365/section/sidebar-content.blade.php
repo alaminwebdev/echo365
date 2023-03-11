@@ -88,20 +88,20 @@
             publication, writers, content, or something else entirely. Totally up to you.</p>
     </div>
 
-    <div class="p-4 bg-light rounded mb-4">
-        <h4 class="fst-italic mb-2">Archives</h4>
-        <div class="archive">
-            <select name="" class="form-select">
-                <option value="">Select Month</option>
-                <option value="">February 2022</option>
-                <option value="">January 2022</option>
-                <option value="">December 2021</option>
-                <option value="">November 2021</option>
-                <option value="">October 2021</option>
-                <option value="">September 2021</option>
-                <option value="">August 2021</option>
-                <option value="">July 2021</option>
-            </select>
+    <div class="card p-4 mb-4">
+        <h4 class="fst-italic mb-4">Archives</h4>
+        <div class="archive text-center">
+            <form action="{{ route('echo365.month') }}" method="post" class="d-flex flex-column flex-sm-row w-100 gap-2">
+                @csrf
+                <select name="month" class="form-select">
+                    <option value="">Select Month</option>
+                    @foreach($archivedDate as $data){
+                        <option value="{{ $data->month }}">{{ $data->month_name.'-'.$data->year }}</option>
+                    }
+                    @endforeach
+                </select>
+                <button type="submit" class="btn btn-primary">Go</button>
+            </form>
         </div>
     </div>
 
