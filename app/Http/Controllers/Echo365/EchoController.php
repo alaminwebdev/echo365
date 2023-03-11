@@ -94,18 +94,19 @@ class EchoController extends Controller
 
     public function postBySubCategory($name, $id)
     {
-        $posts = Post::with('rSubCategory:id,subcategory_name')->where('subcategory_id', $id)->latest()->paginate(6, ['id', 'subcategory_id', 'title', 'image', 'updated_at']);
+        $posts = Post::with('rSubCategory:id,subcategory_name')->where('subcategory_id', $id)->latest()->paginate(6, ['id', 'subcategory_id', 'title', 'image', 'created_at']);
         //dd($posts);
         return view('echo365.pages.category', compact('posts', 'name'));
     }
-    public function postByMonth(Request $request){
+    public function postByMonth(Request $request, $month = []){
         //dd($request->all());
         $posts = DB::table('posts')
-        
-         ->where(DB::raw('MONTH(created_at)'), $request->month )
-        ->get();
-        dd($posts);
-        //return view('echo365.pages.category', compact('posts', 'name'));
+        ->where(DB::raw('MONTH(created_at)'), $request->month )
+        ->latest()
+        ->get(['id', 'subcategory_id', 'title', 'image', 'created_at']);
+        //$monthName
+        //dd($posts);
+        return view('echo365.pages.category', compact('posts'));
     }
 
     public function photos()

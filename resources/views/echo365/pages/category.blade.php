@@ -10,7 +10,10 @@
                             <div class="col-12">
                                 <div class="d-flex justify-content-between align-items-center pb-4 mb-4 border-bottom">
                                     <h3 class="fst-italic ">
-                                        {{ $name }}
+                                        {{-- {{ $name ? $name : '' }} --}}
+                                        @isset($name)
+                                            {{ $name }}
+                                        @endisset
                                     </h3>
                                 </div>
                             </div>
@@ -23,7 +26,7 @@
                                         <div class="ps-0 pe-4 pt-4">
                                             <h4 class="fst-italic">{{ Str::limit($post->title, 50, '...') }}</h4>
                                             <div class="mb-1 text- text-white">
-                                                {{ date('h:i a, d F', strtotime($post->updated_at)) }}</div>
+                                                {{ date('h:i a, d F', strtotime($post->created_at)) }}</div>
                                             <p class="lead mb-0">
                                                 <a href="{{ route('echo365.post', $post->id) }}"
                                                     class="text-white post-link stretched-link">Continue reading...</a>
@@ -34,7 +37,8 @@
                             @empty
                                 <p class="mb-4 ">There is no post found in this category !</p>
                             @endforelse
-                            {{ $posts->onEachSide(2)->links() }}
+
+                            {{-- {{ $posts->onEachSide(2)->links() }} --}}
                         </div>
                     </div>
                 </div>
