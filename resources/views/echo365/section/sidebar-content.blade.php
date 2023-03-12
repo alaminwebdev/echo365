@@ -18,7 +18,7 @@
     @endforeach
 
 
-    <div class="card p-4 mb-4 ">
+    <div class="card p-4 mb-4 shadow-sm">
         <ul class="nav nav-pills border-bottom pb-4" id="pills-tab" role="tablist">
             <li class="" role="presentation">
                 <button class=" active me-2 btn btn-sm btn-outline-success" id="pills-popular-tab" data-bs-toggle="pill"
@@ -39,18 +39,18 @@
                             <img src="{{ asset('uploads/' . $post->image) }}" class="img-fluid rounded" alt="...">
                         </div>
                         <div class="card-body p-2">
-                            <p>
-                                <a href="{{ route('echo365.post', $post->id) }}" class="stretched-link text-dark text-decoration-none fs-6">
+                            <p class="mb-1">
+                                <a href="{{ route('echo365.post', $post->id) }}" class="stretched-link text-dark text-decoration-none">
                                     {{ Str::limit($post->title, 50, '...') }}
                                 </a>
                             </p>
-                            <footer class="blockquote-footer m-0 fs-7">Read More</footer>
+                            <footer class="blockquote-footer m-0">Read More</footer>
                         </div>
                     </div>
                 @empty
                     <div class="card flex-row mt-4 border-0">
                         <div class="card-body p-2">
-                            <p><a href="#" class="text-dark text-decoration-none fs-6">No post found !</a></p>
+                            <p><a href="#" class="text-dark text-decoration-none">No post found !</a></p>
                         </div>
                     </div>
                 @endforelse
@@ -63,18 +63,18 @@
                             <img src="{{ asset('uploads/' . $post->image) }}" class="img-fluid rounded" alt="...">
                         </div>
                         <div class="card-body p-2">
-                            <p>
-                                <a href="{{ route('echo365.post', $post->id) }}" class="stretched-link text-dark text-decoration-none fs-6">
+                            <p class="mb-1">
+                                <a href="{{ route('echo365.post', $post->id) }}" class="stretched-link text-dark text-decoration-none">
                                     {{ Str::limit($post->title, 50, '...') }}
                                 </a>
                             </p>
-                            <footer class="blockquote-footer m-0 fs-7">Read More</footer>
+                            <footer class="blockquote-footer m-0">Read More</footer>
                         </div>
                     </div>
                 @empty
                     <div class="card flex-row mt-4 border-0">
                         <div class="card-body p-2">
-                            <p><a href="#" class="text-dark text-decoration-none fs-6">No post found !</a></p>
+                            <p><a href="#" class="text-dark text-decoration-none">No post found !</a></p>
                         </div>
                     </div>
                 @endforelse
@@ -82,25 +82,19 @@
         </div>
     </div>
 
-    <div class="p-4 mb-4 bg-light rounded">
-        <h4 class="fst-italic">About</h4>
-        <p class="mb-0">Customize this section to tell your visitors a little bit about your
-            publication, writers, content, or something else entirely. Totally up to you.</p>
-    </div>
-
-    <div class="card p-4 mb-4">
-        <h4 class="fst-italic mb-4">Archives</h4>
+    <div class="card p-4 mb-4 shadow-sm">
+        <h4 class="fst-italic fw-bold mb-4">Archives</h4>
         <div class="archive text-center">
             <form action="{{ route('echo365.month') }}" method="post" class="d-flex flex-column flex-sm-row w-100 gap-2">
                 @csrf
-                <select name="month" class="form-select">
+                <select name="month" class="form-select-sm" style="width: inherit">
                     <option value="">Select Month</option>
                     @foreach($archivedDate as $data){
                         <option value="{{ $data->month }}">{{ $data->month_name.'-'.$data->year }}</option>
                     }
                     @endforeach
                 </select>
-                <button type="submit" class="btn btn-primary">Go</button>
+                <button type="submit" class="btn btn-success">Go</button>
             </form>
         </div>
     </div>

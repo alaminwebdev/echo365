@@ -6,9 +6,9 @@
                     <div class="px-4 py-5 mb-4  text-white latest-post rounded"
                         style="background-image: url('{{ asset('uploads/' . $post->image) }}');">
                         <div class="col-lg-8 px-0 py-4">
-                            <h1 class="display-6 fst-italic">{{ $post->title }}</h1>
-                            <p class="lead my-3">{{ Str::words($post->detail, 20, '...') }}</p>
-                            <p class="lead mb-0"><a href="{{ route('echo365.post', $post->id) }}"
+                            <h1 class="fst-italic fw-bold">{{ $post->title }}</h1>
+                            <p class="my-3 fs-5">{{ Str::words($post->detail, 20, '...') }}</p>
+                            <p class="mb-0 fs-6"><a href="{{ route('echo365.post', $post->id) }}"
                                     class="text-white post-link">Continue reading...</a></p>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3 class="pb-4 mb-4 fst-italic border-bottom">
+                <h3 class="pb-4 mb-4 fst-italic fw-bold border-bottom">
                     Latest
                 </h3>
             </div>
@@ -35,18 +35,18 @@
                 {{-- skip the first post using continue statement --}}
                 @continue($loop->first)
                 <div class="col-sm-12 col-md-12 col-lg-6">
-                    <div class="g-0 border rounded overflow-hidden mb-4 shadow-sm">
+                    <div class="border rounded overflow-hidden mb-4 shadow-sm">
                         <div class="py-4 ps-4 position-relative latest-post-text">
                             <strong
                                 class="d-inline-block mb-2 fst-italic text-success">{{ $post->rSubCategory->subcategory_name }}</strong>
-                            <h3 class="mb-1">{{ $post->title }}</h3>
+                            <h4 class="mb-1 fst-italic fw-bold">{{ $post->title }}</h4>
                             <div class="mb-1 text-muted">
                                 {{-- {{ date('d-M-Y', strtotime($post->updated_at)) }} --}}
                                 {{  $post->created_at->diffForHumans() }}
                             </div>
-                            <p class="card-text mb-auto">{{ Str::words($post->detail, 10, '...') }}</p>
+                            <p class="card-text mb-1">{{ Str::words($post->detail, 10, '...') }}</p>
                             <a href="{{ route('echo365.post', $post->id) }}"
-                                class="stretched-link post-link text-dark">Continue reading</a>
+                                class="stretched-link post-link text-dark-emphasis">Continue reading</a>
                             <div class="latest-post-image d-none d-md-block">
                                 <img src="{{ asset('uploads/' . $post->image) }}" alt="" class="">
                             </div>
@@ -64,7 +64,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3 class="pb-4 mb-4 fst-italic border-bottom">
+                <h3 class="pb-4 mb-4 fst-italic fw-bold border-bottom">
                     Featured
                 </h3>
             </div>
@@ -76,13 +76,13 @@
                         <div class="py-4 ps-4 position-relative featured-post-text">
                             <strong
                                 class="d-inline-block mb-2 fst-italic text-success">{{ $post->rSubCategory->subcategory_name }}</strong>
-                            <h3 class="mb-1">{{ $post->title }}</h3>
+                            <h4 class="mb-1 fst-italic fw-bold">{{ $post->title }}</h4>
                             <div class="mb-1 text-muted">
                                 {{-- {{ date('d-M-Y', strtotime($post->updated_at)) }} --}}
                                 {{  $post->created_at->diffForHumans() }}
                             </div>
                             <a href="{{ route('echo365.post', $post->id) }}"
-                                class="stretched-link post-link text-dark">Continue reading</a>
+                                class="stretched-link post-link text-dark-emphasis">Continue reading</a>
                             <div class="featured-post-image d-none d-md-block">
                                 <img src="{{ asset('uploads/' . $post->image) }}" alt="">
                             </div>
@@ -90,7 +90,7 @@
                     </div>
                 </div>
             @empty
-                <p class="mb-4 ">No featured post</p>
+                <p class="mb-4">No featured post</p>
             @endforelse
         </div>
     </div>
@@ -166,11 +166,11 @@
                                 <div class="col-12">
                                     <div
                                         class="d-flex justify-content-between align-items-center pb-4 mb-4 border-bottom">
-                                        <h3 class="fst-italic ">
+                                        <h3 class="fst-italic fw-bold">
                                             {{ $subcategory->subcategory_name }}
 
                                         </h3>
-                                        <a class="btn btn-primary"
+                                        <a class="btn btn-sm btn-outline-success"
                                             href="{{ route('echo365.subcategory', 
                                             [$subcategory->subcategory_name,$subcategory->id]) }}"
                                             role="button">All News</a>
@@ -181,17 +181,17 @@
                                 @forelse ($subcategory->rPost as $post)
                                     <div class="col-sm-12 col-md-12 col-lg-6">
                                         @break($loop->iteration == 5)
-                                        <div class="g-0 border rounded overflow-hidden mb-4 shadow-sm">
+                                        <div class="border rounded overflow-hidden mb-4 shadow-sm">
                                             <div class="py-4 ps-4 position-relative featured-post-text">
                                                 <strong
                                                     class="d-inline-block mb-2 fst-italic text-success">{{ $subcategory->subcategory_name }}</strong>
-                                                <h4 class="mb-1">{{ $post->title }}</h4>
+                                                <h4 class="mb-1 fw-bold fst-italic">{{ $post->title }}</h4>
                                                 <div class="mb-1 text-muted">
                                                     {{-- {{ date('d-M-Y', strtotime($post->updated_at)) }} --}}
                                                     {{  $post->created_at->diffForHumans() }}
                                                 </div>
                                                 <a href="{{ route('echo365.post', $post->id) }}"
-                                                    class="stretched-link post-link text-dark">Continue reading</a>
+                                                    class="stretched-link post-link text-dark-emphasis">Continue reading</a>
                                                 <div class="featured-post-image d-none d-md-block">
                                                     <img src="{{ asset('uploads/' . $post->image) }}" alt="">
                                                 </div>

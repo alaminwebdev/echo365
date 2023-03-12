@@ -5,12 +5,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mb-4">{{ $post->title }}</h2>
+                    <h2 class="mb-4 fw-bold">{{ $post->title }}</h2>
                     <nav class="breadcrumb mb-4 border-top border-bottom">
                         <ol class="breadcrumb m-0 py-2">
                             <li class="breadcrumb-item"><a href="{{ route('echo365.home') }}">Home</a></li>
                             <li class="breadcrumb-item">
-                                <a href="{{ route('echo365.subcategory', $post->rSubCategory->id) }}">
+                                <a href="{{ route('echo365.subcategory', [$post->rSubCategory->subcategory_name, $post->rSubCategory->id]) }}">
                                     {{ $post->rSubCategory->subcategory_name }}
                                 </a>
                             </li>

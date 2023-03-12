@@ -1,38 +1,39 @@
 body {
-	font-family: "Playfair Display", Georgia, "Times New Roman", serif !important;
-	font-weight: 500;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+	font-size: small !important;
+}
+ul,.btn{
+	font-size: small !important;
 }
 
 p,
+span,
+a,
+ul,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
-	font-family: "Playfair Display", Georgia, "Times New Roman", serif
-		/*rtl:Amiri, Georgia, "Times New Roman", serif*/
-	;
+h6,
+#webTicker {
 	margin: 0 !important;
+	font-family: 'Merriweather', serif !important;
 }
+
+
 
 .blog-header {
 	border-bottom: 1px solid #e5e5e5;
 }
-#webTicker{
-	font-family: "Playfair Display" !important;
-}
-
 .blog-header-logo {
-	font-family: "Playfair Display", Georgia, "Times New Roman", serif
-		/*rtl:Amiri, Georgia, "Times New Roman", serif*/
-	;
+	font-family: 'Merriweather', serif !important;
 	font-size: 2.25rem;
 	text-decoration: underline;
-	font-weight: 600;
+	font-weight:bold;
+	font-style: italic;
 }
 
 .blog-header-logo:hover, .post-link:hover {

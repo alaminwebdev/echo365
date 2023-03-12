@@ -11,6 +11,7 @@ use App\Models\Post;
 use App\Models\SubCategory;
 use App\Models\Ticker;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -98,15 +99,18 @@ class EchoController extends Controller
         //dd($posts);
         return view('echo365.pages.category', compact('posts', 'name'));
     }
-    public function postByMonth(Request $request, $month = []){
-        //dd($request->all());
+    public function postByMonth(Request $request){
         $posts = DB::table('posts')
         ->where(DB::raw('MONTH(created_at)'), $request->month )
         ->latest()
         ->get(['id', 'subcategory_id', 'title', 'image', 'created_at']);
-        //$monthName
         //dd($posts);
-        return view('echo365.pages.category', compact('posts'));
+
+        // convert number to month in text format
+        $dateTimeObj = DateTime::createFromFormat('!m',$request->month);
+        $month = $dateTimeObj->format('F');
+
+        return view('echo365.pages.archive', compact('posts', 'month'));
     }
 
     public function photos()

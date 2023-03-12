@@ -9,8 +9,8 @@
                         <ul id="webTicker">
                             @foreach ($posts as $post)
                                 <li>
-                                    <a href="{{ route('echo365.post', $post->id) }}" class="text-dark text-wrap bg-body-secondary fs-5">
-                                        {{ $post->title }}
+                                    <a href="{{ route('echo365.post', $post->id) }}" class="text-dark fs-6 fst-italic text-decoration-none">
+                                    {{ $post->title.' |'}}
                                     </a>
                                 </li>
                             @endforeach
