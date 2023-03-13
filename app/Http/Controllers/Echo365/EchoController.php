@@ -132,26 +132,11 @@ class EchoController extends Controller
     public function contact_store(Request $request)
     {
         //dd($request->all());
-
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'message' => 'required'
         ]);
-
-        if ($validator->fails()) {
-
-            return response()->json([
-                'code' => 0,
-                'error_message' => $validator->errors()->toArray(),
-            ]);
-
-            // Also handy: get the array with the errors
-            //$validator->errors();
-
-            // or, for APIs:
-            //$validator->errors()->toJson();
-        }
 
         // Input is valid, continue...
         $admin = Admin::findOrFail(1);
@@ -161,13 +146,10 @@ class EchoController extends Controller
         $message .= 'Email : ' . $request->email . '<br>';
         $message .= 'Message  : ' . $request->message;
         //dd($message);
-
-
+        
         Mail::to($admin->email)->send(new ContactMail($subject, $message));
         return response()->json([
-            'code' => 1,
-            'success_message' => 'Email is send succesfully !',
-
+            'status' => 'success',
         ]);
     }
 }

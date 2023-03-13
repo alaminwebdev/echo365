@@ -16,6 +16,12 @@
         <i class="fas fa-angle-up"></i>
     </div> --}}
 
+    <div id="loader">
+        <div class="spinner-border spinner" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
     <!-- All Javascripts -->
     @include('echo365.partials.scripts')
 

@@ -24,14 +24,16 @@
                 </div>
     
                 <div class="mb-4">
-                    <form>
+                    <form action="{{ route('echo365.subscribe') }}" method="post" id="add_subscribe">
+                        @csrf
                         <h5 class="mb-2">Subscribe to our newsletter</h5>
                         <p class="mb-2">Monthly digest of what's new and exciting from us.</p>
-                        <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                        <div class="d-flex flex-column flex-sm-row w-100 gap-2 mb-2">
                             <label for="newsletter1" class="visually-hidden">Email address</label>
-                            <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                            <button class="btn btn-primary" type="button">Subscribe</button>
+                            <input id="newsletter1" type="text" class="form-control" placeholder="Email address" name="email" >
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
                         </div>
+                        <span class="text-danger-emphasis error-text email_error"></span>
                     </form>
                 </div>
             </div>

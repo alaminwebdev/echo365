@@ -7,6 +7,7 @@
 
 <script src="{{ asset('plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{ asset('plugins/jquery/jquery.waypoints.min.js') }}"></script>
+
 <script src="{{ asset('dist/js/custom.js') }}"></script>
 
 

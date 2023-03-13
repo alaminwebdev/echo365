@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\PhotoController;
-
+use App\Http\Controllers\SubscriberController;
 
 // echo365 - front end section
 Route::controller(EchoController::class)->group(function () {
@@ -25,6 +25,9 @@ Route::controller(EchoController::class)->group(function () {
     Route::get('contact', 'contact')->name('echo365.contact');
     Route::post('contact', 'contact_store')->name('contact.store');
 });
+
+Route::get('subscribe/{token}/{email}', [SubscriberController::class, 'verify']);
+Route::post('subscribe', [SubscriberController::class, 'store'])->name('echo365.subscribe');
 
 
 // Admin Authentication section

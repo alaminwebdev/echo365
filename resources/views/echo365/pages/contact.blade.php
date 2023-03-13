@@ -12,38 +12,28 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-6">
-                    <form action="{{ route('contact.store') }}" method="post" class="contact-submit">
+                    <form action="{{ route('contact.store') }}" method="post" id="contact_submit">
                         @csrf
                         <div class="mb-3">
                             <label for="" class="form-label">Name</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name">
-                            <span class="text-danger-emphasis fs-7 error-text name_error"></span>
-                            @error('name')
-                                <span class="text-danger-emphasis fs-7">{{ $message }}</span>
-                            @enderror
+                            <input type="text" class="form-control mb-2" name="name">
+                            <span class="text-danger-emphasis error-text name_error"></span>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Email
                                 Address</label>
-                            <input type="text" class="form-control @error('email') is-invalid @enderror" name="email">
-                            <span class="text-danger-emphasis fs-7 error-text email_error"></span>
-                            @error('email')
-                                <span class="text-danger-emphasis fs-7">{{ $message }}</span>
-                            @enderror
+                            <input type="text" class="form-control mb-2" name="email">
+                            <span class="text-danger-emphasis  error-text email_error"></span>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Message</label>
-                            <textarea class="form-control  @error('message') is-invalid @enderror" rows="3" name="message"></textarea>
-                            <span class="text-danger-emphasis fs-7 error-text message_error"></span>
-                            @error('message')
-                                <span class="text-danger-emphasis fs-7">{{ $message }}</span>
-                            @enderror
+                            <textarea class="form-control mb-2" rows="3" name="message"></textarea>
+                            <span class="text-danger-emphasis error-text message_error"></span>
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary" id="contact_submit">Send
+                            <button type="submit" class="btn btn-primary">Send
                                 Message</button>
                         </div>
-
                     </form>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-6">
@@ -57,14 +47,4 @@
             </div>
         </div>
     </section>
-
-    <div id="loader">
-        <div class="spinner-border spinner" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
-
-
-
-
 @endsection
