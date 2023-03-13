@@ -113,6 +113,14 @@
           </ul>
         </li>
         <li class="nav-item">
+          <a href="{{ route('subscribers.index') }}" class="nav-link {{ request()->routeIs('subscribers.*') ? 'active' : '' }}">
+            <i class="nav-icon fa-solid fa-list-ul"></i>
+            <p>
+              Subscribers
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ route('photo.index') }}" class="nav-link {{ request()->routeIs('photo.*') ? 'active' : '' }}">
             <i class="fa-solid fa-newspaper nav-icon"></i>
             <p>

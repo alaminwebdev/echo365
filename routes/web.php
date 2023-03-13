@@ -113,4 +113,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin:admin'], function () {
     Route::get('photo/{id}', [PhotoController::class, 'show'])->name('photo.show');
     Route::post('photo/update', [PhotoController::class, 'update'])->name('photo.update');
     Route::get('photo/destroy/{id}', [PhotoController::class, 'destroy'])->name('photo.destroy');
+
+    // Subscribers
+    Route::get('subscribers', [SubscriberController::class, 'index'])->name('subscribers.index');
+    Route::get('subscribers/email', [SubscriberController::class, 'email'])->name('subscribers.email');
+    Route::post('subscribers/email', [SubscriberController::class, 'sendEmailToAll'])->name('subscribers.email.submit');
 });

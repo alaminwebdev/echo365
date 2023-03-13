@@ -10,6 +10,20 @@ use Illuminate\Support\Facades\Mail;
 
 class SubscriberController extends Controller
 {
+
+    public function index(){
+        $subscribers = Subscriber::all();
+        return view('admin.pages.subscriber.index', compact('subscribers'));
+    }
+    
+    public function email(){
+        return view('admin.pages.subscriber.email');
+    }
+
+    public function sendEmailToAll(Request $request){
+        dd($request->all());
+    }
+
     public function store(Request $request)
     {
         //dd($request->all());
@@ -48,4 +62,6 @@ class SubscriberController extends Controller
         }
         return 'This link are not valid !';
     }
+
+
 }
