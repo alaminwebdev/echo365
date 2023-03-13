@@ -17,7 +17,10 @@
 
 <script>
     $(document).ready(function() {
-        $('#example2').DataTable();
+        $('#example2').DataTable({
+            bInfo: false, //Dont display info e.g. "Showing 1 to 4 of 4 entries"
+            paging: false, //Dont want paging                
+        });
     });
     $(function() {
         $('input')

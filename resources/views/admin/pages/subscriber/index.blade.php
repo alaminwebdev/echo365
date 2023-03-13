@@ -28,6 +28,7 @@
                                         <th>#</th>
                                         <th>Subscribers Email</th>
                                         <th>Status</th>
+                                        <th>Creation Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -39,7 +40,18 @@
                                                 {{ $subscriber->email }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $subscriber->status }}
+                                                @php
+                                                    $badge = '';
+                                                    if ($subscriber->status == 'active') {
+                                                        $badge = 'success';
+                                                    }else{
+                                                        $badge = 'danger';
+                                                    }
+                                                @endphp
+                                                <span class="badge bg-{{ $badge }}"> {{$subscriber->status  }}</span>
+                                            </td>
+                                            <td class="text-center">
+                                                {{ $subscriber->created_at->diffForHumans() }}
                                             </td>
                                             <th class="text-center">
                                                 <a href="#" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete this Category ?')">
@@ -50,6 +62,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="card-footer pb-0">
+                            {{ $subscribers->links() }}
                         </div>
                     </div>
 

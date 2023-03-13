@@ -30,6 +30,7 @@
                                         <th>Post Title</th>
                                         <th>Post Author</th>
                                         <th>Sub Category</th>
+                                        <th>Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -47,6 +48,9 @@
                                                 {{ $post->rSubCategory->subcategory_name }}
                                             </td>
                                             <td>
+                                                {{ $post->created_at->diffForHumans() }}
+                                            </td>
+                                            <td>
                                                 <div class="btn-group" role="group"
                                                     aria-label="Basic mixed styles example">
                                                     <a href="{{ route('admin.post.show', $post->id) }}" class="btn btn-sm btn-info">
@@ -61,6 +65,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="card-footer pb-0">
+                            {{ $posts->links() }}
                         </div>
                     </div>
                 </div>

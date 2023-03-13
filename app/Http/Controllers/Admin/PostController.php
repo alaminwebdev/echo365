@@ -14,7 +14,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::with('rSubCategory')->get();
+        $posts = Post::with('rSubCategory')->latest()->paginate(10);
         //dd($posts);
         return view('admin.pages.post.post', compact('posts'));
     }

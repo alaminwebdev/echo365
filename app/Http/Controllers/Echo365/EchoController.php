@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Echo365;
 
 use App\Http\Controllers\Controller;
-use App\Mail\ContactMail;
+use App\Mail\WebMail;
 use App\Models\Admin;
 use App\Models\HomeAd;
 use App\Models\Photo;
@@ -15,7 +15,6 @@ use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
 
 
 class EchoController extends Controller
@@ -147,7 +146,7 @@ class EchoController extends Controller
         $message .= 'Message  : ' . $request->message;
         //dd($message);
         
-        Mail::to($admin->email)->send(new ContactMail($subject, $message));
+        Mail::to($admin->email)->send(new WebMail($subject, $message));
         return response()->json([
             'status' => 'success',
         ]);

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ContactMail;
+use App\Mail\WebMail;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +12,8 @@ class SubscriberController extends Controller
 {
 
     public function index(){
-        $subscribers = Subscriber::all();
+        $subscribers = Subscriber::latest()->paginate(10);
+        //dd($subscribers);
         return view('admin.pages.subscriber.index', compact('subscribers'));
     }
     
@@ -21,7 +22,7 @@ class SubscriberController extends Controller
     }
 
     public function sendEmailToAll(Request $request){
-        dd($request->all());
+        
     }
 
     public function store(Request $request)
@@ -44,7 +45,7 @@ class SubscriberController extends Controller
         $url = url('subscribe/' . $token . '/' . $request->email);
         $message = '<p>Please click on this link to verify</p>';
         $message .= '<a href="' . $url . '" target= "_blank">Link</a>';
-        Mail::to($request->email)->send(new ContactMail($subject, $message));
+        Mail::to($request->email)->send(new WebMail($subject, $message));
 
         return response()->json([
             'status' => 'success',

@@ -5,12 +5,12 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ContactMail extends Mailable
+class WebMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -19,6 +19,7 @@ class ContactMail extends Mailable
      *
      * @return void
      */
+
     public $subject;
     public $messages;
 
@@ -49,8 +50,7 @@ class ContactMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'echo365.pages.email',
-            
+            view: 'email',
         );
     }
 
