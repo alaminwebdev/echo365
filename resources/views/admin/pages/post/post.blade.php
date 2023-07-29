@@ -21,8 +21,7 @@
                             </a>
                         </div>
                         <div class="card-body table-responsive">
-                            <table id="example2" class="table table-bordered table-hover "
-                                style="width:100%">
+                            <table id="example2" class="table table-bordered table-hover " style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -39,7 +38,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td class="text-center">
-                                                <img src="{{ asset('uploads/'.$post->image) }}" class="img-fluid rounded" alt="" style="width: 90px
+                                                <img src="{{ asset('uploads/' . $post->image) }}" class="img-fluid rounded" alt="" style="width: 90px
                                                 ">
                                             </td>
                                             <td>{{ $post->title }} {!! $post->is_featured ? '<span class="badge bg-success">Featured</span>' : '' !!}</td>
@@ -51,8 +50,7 @@
                                                 {{ $post->created_at->diffForHumans() }}
                                             </td>
                                             <td>
-                                                <div class="btn-group" role="group"
-                                                    aria-label="Basic mixed styles example">
+                                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                                     <a href="{{ route('admin.post.show', $post->id) }}" class="btn btn-sm btn-info">
                                                         <i class="icon fas fa-edit"></i>
                                                     </a>

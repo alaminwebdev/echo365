@@ -19,6 +19,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/home';
 
+    protected $nameSpaceAdmin = 'App\Http\Controllers\Admin';
+    protected $nameSpaceUsers = 'App\Http\Controllers\Echo365';
+
+
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      *
@@ -35,6 +39,8 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+            
+            
         });
     }
 
