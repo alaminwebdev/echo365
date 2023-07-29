@@ -39,7 +39,7 @@ class PostController extends Controller
 
             DB::beginTransaction();
             try {
-                
+
                 $post                   = new Post();
     
                 $post->title            = $request->title;
@@ -106,75 +106,91 @@ class PostController extends Controller
 
     public function update(Request $request)
     {
-        $post = Post::findOrFail($request->id);
-        //dd($request->all());
-        if ($request->isMethod('post')) {
-            $request->validate([
-                'title' => 'required',
-                'detail' => 'required'
-            ]);
+        DB::beginTransaction();
+        try {
+            $post = Post::findOrFail($request->id);
 
-            if ($request->hasFile('image')) {
+            if ($request->isMethod('post')) {
                 $request->validate([
-                    'image' => 'image|mimes:jpg,png,jpeg,webp|max:512'
+                    'title' => 'required',
+                    'detail' => 'required'
                 ]);
-
-                // if validation is complete then delete the old photo from local server
-                $image_path = public_path('uploads/' . $post->image);
-                if (file_exists($image_path) && !empty($post->image)) {
-                    unlink($image_path);
-                };
-
-
-                $ext_name = $request->file('image')->extension();
-                $img_name = 'post' . time() . '.' . $ext_name;
-
-                $request->file('image')->move(public_path('uploads/'), $img_name);
-
-                $post->image = $img_name;
-            }
-            $post->title = $request->title;
-            $post->detail = $request->detail;
-            $post->subcategory_id = $request->subcategory_id;
-            $post->admin_id  = Auth::guard('admin')->user()->id;
-            //$post->author_id  = 0;
-            $post->is_share = $request->is_share;
-            $post->is_comment = $request->is_comment;
-            $post->is_featured = $request->is_featured;
-            $post->update();
-
-            if ($request->filled('tags')) {
-                $tags = explode(',', $request->tags);
-                foreach ($tags as $tag) {
-                    // trim tha tag data
-                    $trimmed_tag = trim($tag);
-                    // check the tag are already exist in database or not 
-                    $tag_data = Tag::where('post_id', $request->id)
-                        ->where('tag', $trimmed_tag)->count();
-
-                    if (!$tag_data) { // if tag are not exist
-                        $new_tag = new Tag();
-                        $new_tag->tag = $trimmed_tag;
-                        $new_tag->post_id = $request->id;
-                        $new_tag->save();
+    
+                if ($request->hasFile('image')) {
+                    $request->validate([
+                        'image' => 'image|mimes:jpg,png,jpeg,webp|max:512'
+                    ]);
+    
+                    // if validation is complete then delete the old photo from local server
+                    $image_path = public_path('uploads/' . $post->image);
+                    if (file_exists($image_path) && !empty($post->image)) {
+                        unlink($image_path);
+                    };
+    
+    
+                    $ext_name = $request->file('image')->extension();
+                    $img_name = 'post' . time() . '.' . $ext_name;
+    
+                    $request->file('image')->move(public_path('uploads/'), $img_name);
+    
+                    $post->image = $img_name;
+                }
+                $post->title = $request->title;
+                $post->detail = $request->detail;
+                $post->subcategory_id = $request->subcategory_id;
+                $post->admin_id  = Auth::guard('admin')->user()->id;
+                //$post->author_id  = 0;
+                $post->is_share = $request->is_share;
+                $post->is_comment = $request->is_comment;
+                $post->is_featured = $request->is_featured;
+                $post->update();
+    
+                if ($request->filled('tags')) {
+                    $tags = explode(',', $request->tags);
+                    foreach ($tags as $tag) {
+                        // trim tha tag data
+                        $trimmed_tag = trim($tag);
+                        // check the tag are already exist in database or not 
+                        $tag_data = Tag::where('post_id', $request->id)
+                            ->where('tag', $trimmed_tag)->count();
+    
+                        if (!$tag_data) { // if tag are not exist
+                            $new_tag = new Tag();
+                            $new_tag->tag = $trimmed_tag;
+                            $new_tag->post_id = $request->id;
+                            $new_tag->save();
+                        }
                     }
                 }
             }
-            return redirect()->route('admin.post.home')->with('success', 'Post updated successfully !');
-        }
+            DB::commit();
+            
+        } catch (\Throwable $th) {
+            DB::rollback();
+            dd($th->getMessage());
+        };
+
+        return redirect()->route('admin.post.home')->with('success', 'Post updated successfully !');
     }
 
 
     public function destroy($id)
     {
-        $post = Post::findorFail($id);
-        Tag::where('post_id', $id)->delete();
-        $image_path = public_path('uploads/'.$post->image);
-        if(file_exists($image_path) && !empty($post->image)){
-            unlink($image_path);
+        DB::beginTransaction();
+        try {
+            $post = Post::findorFail($id);
+            Tag::where('post_id', $id)->delete();
+            $image_path = public_path('uploads/'.$post->image);
+            if(file_exists($image_path) && !empty($post->image)){
+                unlink($image_path);
+            }
+            
+            $post->delete();
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollback();
+            dd($th->getMessage());
         }
-        
-        $post->delete();
         return redirect()->route('admin.post.home')->with('success', 'Post deleted Successfully !');
     }
 
